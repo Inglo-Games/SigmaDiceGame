@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://ht7atlg3hyeo"]
+
+[ext_resource type="PackedScene" uid="uid://dl3po7st13ed5" path="res://Scenes/DiceBox.tscn" id="1_mcfib"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_mht0p"]
+[ext_resource type="PackedScene" uid="uid://bnuyb0p8l4syw" path="res://Scenes/Die.tscn" id="2_a2hh2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ly2ab"]
+sky_top_color = Color(0.156863, 0.631373, 0.807843, 1)
+sky_horizon_color = Color(0.541176, 0.372549, 0, 1)
+
+[sub_resource type="Sky" id="Sky_v6gxa"]
+sky_material = SubResource("ProceduralSkyMaterial_ly2ab")
+
+[sub_resource type="Environment" id="Environment_ajpux"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_v6gxa")
+reflected_light_source = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm4pm"]
+size = Vector3(7, 1, 2.75)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_mht0p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ajpux")
+
+[node name="DiceBox" parent="." instance=ExtResource("1_mcfib")]
+
+[node name="Die" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1, -1.5)
+
+[node name="Die2" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1, -1.5)
+
+[node name="Die3" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.5)
+
+[node name="Die4" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1, -1.5)
+
+[node name="Die5" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1, -1.5)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 2)
+current = true
+
+[node name="DiceArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, -8)
+shape = SubResource("BoxShape3D_rm4pm")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+
+[node name="EndRoundButton" type="Button" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+disabled = true
+text = "End Round"
+
+[connection signal="pressed" from="ButtonContainer/EndRoundButton" to="." method="_on_pressed_end_round_button"]

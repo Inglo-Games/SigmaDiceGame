@@ -1,0 +1,105 @@
+class_name Die
+extends RigidBody3D
+
+
+# Transparent color value for background glow
+const GLOW_NONE := Color(0, 0, 0, 0)
+
+signal color_selection_changed
+signal finished_moving
+
+@onready var GLOW_A : Color = ProjectSettings.get_setting("user_settings/colors/dice_color_a")
+@onready var GLOW_B : Color = ProjectSettings.get_setting("user_settings/colors/dice_color_b")
+
+@onready var original_pos := global_position
+@onready var glow_color := GLOW_NONE
+
+var is_moving := false
+
+
+func _physics_process(_delta):
+	# If moving, check magnitude of velocity vector to see if stopped
+	if is_moving:
+		if linear_velocity.is_zero_approx():
+			is_moving = false
+			emit_signal("finished_moving")
+
+
+# Get the current value of the die, i.e. the number on the top face
+func get_value() -> int :
+	if $RayCast01.is_colliding():
+		return 1
+	elif $RayCast02.is_colliding():
+		return 2
+	elif $RayCast03.is_colliding():
+		return 3
+	elif $RayCast04.is_colliding():
+		return 4
+	elif $RayCast05.is_colliding():
+		return 5
+	elif $RayCast06.is_colliding():
+		return 6
+	else:
+		print("Error in Die.get_value(): No raycasts are colliding!")
+		return 0
+
+
+# Get the current glow color of the dice that the player has selected
+func get_color() -> Color :
+	return glow_color
+
+
+func _on_input_event(_camera, event, _position, _normal, _shape_idx):
+	if event.is_action("select_die") and event.is_pressed():
+		_change_glow_color()
+		emit_signal("color_selection_changed")
+
+
+# Change the color of the glow around the die's edge
+func _change_glow_color():
+	match glow_color:
+		GLOW_B:
+			glow_color = GLOW_NONE
+		GLOW_A:
+			glow_color = GLOW_B
+		GLOW_NONE:
+			glow_color = GLOW_A
+	$MeshInstance3D.set_instance_shader_parameter("outline_color", glow_color)
+
+
+# Reset die to original positions and clear outline glow
+func _reset_die():
+	global_position = original_pos
+	freeze = true
+	global_position = original_pos
+	
+	is_moving = false
+	glow_color = GLOW_NONE
+	$MeshInstance3D.set_instance_shader_parameter("outline_color", glow_color)
+	emit_signal("color_selection_changed")
+
+
+# Randomize the rotation values
+func _randomize_orientation():
+	var x_rot := randf_range(0.0, 2*PI)
+	var y_rot := randf_range(0.0, 2*PI)
+	var z_rot := randf_range(0.0, 2*PI)
+	rotation = Vector3(x_rot, y_rot, z_rot)
+
+
+# Emit a force to push the die "forward" relative to the world
+func _launch_die():
+	freeze = false
+	_randomize_orientation()
+	# Apply a force with a large forward force and a small upward force
+	apply_impulse(
+		Vector3(0, randf_range(0,2), randf_range(-8, -12)), 
+		Vector3.ZERO
+	)
+	# Apply a random rotational force around the x (sideways) axis
+	apply_torque_impulse(
+		Vector3(randf_range(50.0, 250.0), 0, 0)
+	)
+	# Delay setting is_moving so it doesn't trigger on the next frame
+	await get_tree().create_timer(0.02).timeout
+	is_moving = true

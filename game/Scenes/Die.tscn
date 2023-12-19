@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnuyb0p8l4syw"]
+
+[ext_resource type="Script" path="res://Scenes/Die.gd" id="1_7np7b"]
+[ext_resource type="Shader" path="res://Materials/SilhouetteGlow.gdshader" id="2_btk8p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_882w2"]
+render_priority = 0
+shader = ExtResource("2_btk8p")
+shader_parameter/outline_width = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuaq3"]
+next_pass = SubResource("ShaderMaterial_882w2")
+
+[sub_resource type="BoxMesh" id="BoxMesh_052ak"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_uuaq3")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y2ss1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Die" type="RigidBody3D"]
+mass = 4.67
+freeze = true
+script = ExtResource("1_7np7b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_052ak")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y2ss1")
+
+[node name="RayCast01" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, -0.5, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 1, 1, 1)
+
+[node name="RayCast02" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506169, 0, 0)
+visible = false
+target_position = Vector3(0.5, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RayCast03" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, 0, -0.5)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="RayCast04" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, 0, 0.5)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="RayCast05" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(-0.5, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0, 1, 1, 1)
+
+[node name="RayCast06" type="RayCast3D" parent="."]
+visible = false
+target_position = Vector3(0, 0.5, 0)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 1, 0, 1)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
