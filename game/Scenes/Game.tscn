@@ -5,17 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bnuyb0p8l4syw" path="res://Scenes/Die.tscn" id="2_a2hh2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ly2ab"]
-sky_top_color = Color(0.156863, 0.631373, 0.807843, 1)
+sky_top_color = Color(0.854902, 0.854902, 0.854902, 1)
 sky_horizon_color = Color(0.541176, 0.372549, 0, 1)
 
 [sub_resource type="Sky" id="Sky_v6gxa"]
 sky_material = SubResource("ProceduralSkyMaterial_ly2ab")
 
 [sub_resource type="Environment" id="Environment_ajpux"]
-background_mode = 2
-background_energy_multiplier = 2.0
+background_mode = 1
 sky = SubResource("Sky_v6gxa")
-reflected_light_source = 2
+ambient_light_source = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm4pm"]
 size = Vector3(7, 1, 2.75)
@@ -52,6 +51,9 @@ current = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiceArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, -8)
 shape = SubResource("BoxShape3D_rm4pm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.583143, -0.707107, -0.39993, 0.565586, -1.91925e-08, 0.824689, -0.583143, -0.707107, 0.39993, -2, 7, 5)
 
 [node name="ButtonContainer" type="HBoxContainer" parent="."]
 anchors_preset = 3
