@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 game/.godot/
+
+# Blender backup files
+blender_models/*.blend1
