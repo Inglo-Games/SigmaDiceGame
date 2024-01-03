@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ht7atlg3hyeo"]
+[gd_scene load_steps=9 format=3 uid="uid://ht7atlg3hyeo"]
 
 [ext_resource type="PackedScene" uid="uid://dl3po7st13ed5" path="res://Scenes/DiceBox.tscn" id="1_mcfib"]
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_mht0p"]
 [ext_resource type="PackedScene" uid="uid://bnuyb0p8l4syw" path="res://Scenes/Die.tscn" id="2_a2hh2"]
+[ext_resource type="PackedScene" uid="uid://dj0uen5t451qt" path="res://Scenes/UI/ScoreboardPanel.tscn" id="4_56du8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ly2ab"]
 sky_top_color = Color(0.854902, 0.854902, 0.854902, 1)
@@ -73,5 +74,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 disabled = true
 text = "End Round"
+
+[node name="ScoreboardPanel" parent="." instance=ExtResource("4_56du8")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -22.0
+grow_horizontal = 0
 
 [connection signal="pressed" from="ButtonContainer/EndRoundButton" to="." method="_on_pressed_end_round_button"]
