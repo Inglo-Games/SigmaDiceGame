@@ -11,6 +11,8 @@ signal finished_moving
 @onready var GLOW_A : Color = ProjectSettings.get_setting("user_settings/colors/dice_color_a")
 @onready var GLOW_B : Color = ProjectSettings.get_setting("user_settings/colors/dice_color_b")
 
+@onready var face_cast : RayCast3D = $FaceDetectorRaycast
+
 @onready var original_pos := global_position
 @onready var glow_color := GLOW_NONE
 
@@ -23,24 +25,29 @@ func _physics_process(_delta):
 		if linear_velocity.is_zero_approx():
 			is_moving = false
 			emit_signal("finished_moving")
+	
+	# Reposition face detecting raycast to be above die WRT global position
+	face_cast.global_position = global_position + Vector3.UP
 
 
 # Get the current value of the die, i.e. the number on the top face
 func get_value() -> int :
-	if $RayCast01.is_colliding():
+	var up_face = face_cast.get_collider()
+	
+	if up_face == $FaceArea1:
 		return 1
-	elif $RayCast02.is_colliding():
+	elif up_face == $FaceArea2:
 		return 2
-	elif $RayCast03.is_colliding():
+	elif up_face == $FaceArea3:
 		return 3
-	elif $RayCast04.is_colliding():
+	elif up_face == $FaceArea4:
 		return 4
-	elif $RayCast05.is_colliding():
+	elif up_face == $FaceArea5:
 		return 5
-	elif $RayCast06.is_colliding():
+	elif up_face == $FaceArea6:
 		return 6
 	else:
-		print("Error in Die.get_value(): No raycasts are colliding!")
+		print("Error in Die.get_value(): FaceDetectorRaycast is not colliding!")
 		return 0
 
 
