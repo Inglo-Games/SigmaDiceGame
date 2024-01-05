@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ht7atlg3hyeo"]
+[gd_scene load_steps=8 format=3 uid="uid://ht7atlg3hyeo"]
 
-[ext_resource type="PackedScene" uid="uid://dl3po7st13ed5" path="res://Scenes/DiceBox.tscn" id="1_mcfib"]
 [ext_resource type="Script" path="res://Scenes/Game.gd" id="1_mht0p"]
 [ext_resource type="PackedScene" uid="uid://bnuyb0p8l4syw" path="res://Scenes/Die.tscn" id="2_a2hh2"]
+[ext_resource type="PackedScene" uid="uid://54ft880qyhnx" path="res://Meshes/dice_box.glb" id="2_vgoxa"]
 [ext_resource type="PackedScene" uid="uid://dj0uen5t451qt" path="res://Scenes/UI/ScoreboardPanel.tscn" id="4_56du8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ly2ab"]
@@ -17,16 +17,14 @@ background_mode = 1
 sky = SubResource("Sky_v6gxa")
 ambient_light_source = 3
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rm4pm"]
-size = Vector3(7, 1, 2.75)
-
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_mht0p")
 
+[node name="dice_box" parent="." instance=ExtResource("2_vgoxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -6)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ajpux")
-
-[node name="DiceBox" parent="." instance=ExtResource("1_mcfib")]
 
 [node name="Die" parent="." groups=["dice"] instance=ExtResource("2_a2hh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1, -1.5)
@@ -46,12 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1, -1.5)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 4, 2)
 current = true
-
-[node name="DiceArea" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9, -8)
-shape = SubResource("BoxShape3D_rm4pm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.583143, -0.707107, -0.39993, 0.565586, -1.91925e-08, 0.824689, -0.583143, -0.707107, 0.39993, -2, 7, 5)
