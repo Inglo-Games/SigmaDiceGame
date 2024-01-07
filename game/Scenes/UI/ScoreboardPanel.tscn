@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj0uen5t451qt"]
+[gd_scene load_steps=3 format=3 uid="uid://dj0uen5t451qt"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ScoreboardPanel.gd" id="1_b3tc4"]
+[ext_resource type="PackedScene" uid="uid://ckferd6wgtq5r" path="res://Scenes/UI/Scoreboard.tscn" id="2_6bmwe"]
 
 [node name="ScoreboardPanel" type="HBoxContainer"]
 anchors_preset = 15
@@ -18,5 +19,10 @@ text = "<"
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Scoreboard" parent="PanelContainer" instance=ExtResource("2_6bmwe")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [connection signal="pressed" from="ExpanderButton" to="." method="_on_expander_button_pressed"]

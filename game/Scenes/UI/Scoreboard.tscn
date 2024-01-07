@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckferd6wgtq5r"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Scoreboard.gd" id="1_nau32"]
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nau32")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 91.0
+offset_bottom = 151.0
+
+[node name="ScoresHeader" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Scores"
+
+[node name="GridContainer" type="GridContainer" parent="VBox"]
+layout_mode = 2
+columns = 2
+
+[node name="ScoreTotalLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Total score: 0"
+
+[node name="DiscardHeader" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Discard Pile"
+
+[node name="Grid2" type="GridContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="DiscardLabel0" type="Label" parent="VBox/Grid2"]
+layout_mode = 2
+text = "?"
+
+[node name="ProgBar0" type="ProgressBar" parent="VBox/Grid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 1.0
+show_percentage = false
+
+[node name="DiscardLabel1" type="Label" parent="VBox/Grid2"]
+layout_mode = 2
+text = "?"
+
+[node name="ProgBar1" type="ProgressBar" parent="VBox/Grid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 1.0
+show_percentage = false
+
+[node name="DiscardLabel2" type="Label" parent="VBox/Grid2"]
+layout_mode = 2
+text = "?"
+
+[node name="ProgBar2" type="ProgressBar" parent="VBox/Grid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 1.0
+show_percentage = false
