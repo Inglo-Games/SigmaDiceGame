@@ -38,13 +38,10 @@ func _check_selection_legality(dice:Dictionary) -> bool :
 			return true
 		else:
 			# Otherwise see if none of the 5 dice's values were in the discard pile
-			for val in dice["color_a"]:
+			for val in (dice["color_a"] + dice["color_b"]):
 				if val in discard_vals:
 					print("Discard die must be one of %s" % str(discard_vals))
 					return false
-			for val in dice["color_b"]:
-				if val in discard_vals:
-					print("Discard die must be one of %s" % str(discard_vals))
 	
 	# If we reach this point, then none of the 5 dice values were in the already
 	# filled discard pile.  Player selection is legal by default.
