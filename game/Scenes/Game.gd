@@ -89,6 +89,7 @@ func _decrement_moving_dice_count():
 func _on_pressed_end_round_button(): 
 	if game_state.end_round(_create_dice_dict()):
 		print("Current scores:\n%s\n%s\n" % [game_state.score_pair_count, game_state.discard_pile])
+		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
 		_reset_game_state()
 	else:
 		print("Can't end round!\n")
