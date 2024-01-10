@@ -36,6 +36,8 @@ func _ready():
 	for node in get_children():
 		if node is Die:
 			node.connect("finished_moving", _decrement_moving_dice_count)
+	game_state.connect("selection_error_two_pairs", _on_error_two_pairs)
+	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
 
 
 func _input(_event):
@@ -103,3 +105,17 @@ func _reset_game_state():
 	get_tree().call_group("dice", "_reset_die")
 	$Camera3D.transform = CAM_START_POS
 	$ButtonContainer/EndRoundButton.disabled = true
+
+
+# Display a temp notification alerting player of selection error
+func _on_error_two_pairs():
+	var notif = TempNotifFactory.create_notif("You must have 2 dice of each color")
+	add_child(notif)
+
+
+# Display a temp notification alerting player of discard error
+func _on_error_bad_discard(discard_vals:Array):
+	var msg = "Discard die must be one of %d, %d, or %d" % \
+			[discard_vals[0], discard_vals[1], discard_vals[2]]
+	var notif = TempNotifFactory.create_notif(msg)
+	add_child(notif)

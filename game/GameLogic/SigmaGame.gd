@@ -10,6 +10,10 @@ const NEGATIVE_SCORE_VALUE := -200
 const POSITIVE_SCORE_VALUE := 100
 const SCORE_SCALING_BONUS := 20
 
+# Signals to alert game that an error message needs to be displayed
+signal selection_error_two_pairs
+signal selection_error_bad_discard
+
 # Keeps track of how many of each sum has been scored by the player
 var score_pair_count : Array[int] = []
 # Keeps track of the "discard pile" of dice that weren't paired up each round
@@ -31,6 +35,7 @@ func _check_selection_legality(dice:Dictionary) -> bool :
 	# First, check there are exactly 2 dice for each color selected
 	if len(dice["color_a"]) != 2 or len(dice["color_b"]) != 2:
 		print("Must have 2 dice of each color!")
+		selection_error_two_pairs.emit()
 		return false
 	
 	# Next check if the discard list already has 3 values
@@ -46,6 +51,7 @@ func _check_selection_legality(dice:Dictionary) -> bool :
 			for val in (dice["color_a"] + dice["color_b"]):
 				if val in discard_vals:
 					print("Discard die must be one of %s" % str(discard_vals))
+					selection_error_bad_discard.emit(discard_vals)
 					return false
 	
 	# If we reach this point, then none of the 5 dice values were in the already
