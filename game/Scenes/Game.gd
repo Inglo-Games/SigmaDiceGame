@@ -59,7 +59,7 @@ func _input(_event):
 # Moves camera from starting position to directly above dice target
 func _tween_cam_transform():
 	var tween = create_tween()
-	tween.tween_property($Camera3D, "transform", CAM_END_POS, 4.5).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property($Camera3D, "transform", CAM_END_POS, 2.5).set_trans(Tween.TRANS_CUBIC)
 	tween.play()
 
 

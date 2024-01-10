@@ -100,7 +100,7 @@ func _launch_die():
 	_randomize_orientation()
 	# Apply a force with a large forward force and a small upward force
 	apply_impulse(
-		Vector3(0, randf_range(0,2), randf_range(-8, -12)), 
+		Vector3(0, randf_range(0,5), randf_range(-20, -25)), 
 		Vector3.ZERO
 	)
 	# Apply a random rotational force around the x (sideways) axis
