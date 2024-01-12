@@ -4,10 +4,12 @@
 [ext_resource type="Script" path="res://Scenes/UI/ScoreboardPanel.gd" id="1_b3tc4"]
 [ext_resource type="PackedScene" uid="uid://ckferd6wgtq5r" path="res://Scenes/UI/Scoreboard.tscn" id="2_6bmwe"]
 
-[node name="ScoreboardPanel" type="HBoxContainer"]
+[node name="ScoreboardPanel" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5t1ag")
@@ -16,15 +18,16 @@ script = ExtResource("1_b3tc4")
 [node name="ExpanderButton" type="Button" parent="."]
 layout_mode = 2
 size_flags_vertical = 4
-text = "<"
+text = "^"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Scoreboard" parent="PanelContainer" instance=ExtResource("2_6bmwe")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [connection signal="pressed" from="ExpanderButton" to="." method="_on_expander_button_pressed"]
