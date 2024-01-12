@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://rg1ln7dcrvfs"]
+[gd_scene load_steps=3 format=3 uid="uid://rg1ln7dcrvfs"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/MainMenu.gd" id="1_0s8gd"]
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_lujfo"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_lujfo")
 script = ExtResource("1_0s8gd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -24,6 +26,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 72
 text = "Sigma Dice Game"
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]

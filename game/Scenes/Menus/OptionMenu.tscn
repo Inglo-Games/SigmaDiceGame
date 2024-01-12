@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhne06yd0qj4y"]
+[gd_scene load_steps=3 format=3 uid="uid://dhne06yd0qj4y"]
 
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_bjqij"]
 [ext_resource type="Script" path="res://Scenes/Menus/OptionMenu.gd" id="1_ls51q"]
 
 [node name="OptionMenu" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_bjqij")
 script = ExtResource("1_ls51q")
 
 [node name="BackButton" type="Button" parent="."]
@@ -45,6 +47,8 @@ horizontal_alignment = 2
 [node name="SfxSlider" type="HSlider" parent="GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 value = 100.0
 tick_count = 6
 ticks_on_borders = true
@@ -57,6 +61,8 @@ horizontal_alignment = 2
 [node name="BgmSlider" type="HSlider" parent="GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 value = 100.0
 tick_count = 6
 ticks_on_borders = true

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj0uen5t451qt"]
+[gd_scene load_steps=4 format=3 uid="uid://dj0uen5t451qt"]
 
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_5t1ag"]
 [ext_resource type="Script" path="res://Scenes/UI/ScoreboardPanel.gd" id="1_b3tc4"]
 [ext_resource type="PackedScene" uid="uid://ckferd6wgtq5r" path="res://Scenes/UI/Scoreboard.tscn" id="2_6bmwe"]
 
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5t1ag")
 script = ExtResource("1_b3tc4")
 
 [node name="ExpanderButton" type="Button" parent="."]
