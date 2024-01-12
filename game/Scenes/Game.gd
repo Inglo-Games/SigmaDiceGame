@@ -18,6 +18,9 @@ const CAM_END_POS = Transform3D(
 		Vector3(0, 6.5, -7)
 )
 
+# Length threshold for a touchscreen swipe
+const SWIPE_THRESHOLD := 192.0
+
 # Game state and logic object
 @onready var game_state = SigmaGame.new()
 
@@ -29,6 +32,8 @@ const CAM_END_POS = Transform3D(
 var dice_state := DICE_STATE.START
 # Track number of dice moving at any time
 var dice_moving := 0
+# Track touchscreen touch positions
+var touch_start := Vector2.ZERO
 
 
 func _ready():
@@ -43,17 +48,23 @@ func _ready():
 func _input(_event):
 	
 	if Input.is_action_just_pressed("launch_dice") and dice_state == DICE_STATE.START:
-		dice_state = DICE_STATE.ROLLING
-		dice_moving = 5
-		get_tree().call_group("dice", "_launch_die")
-		_tween_cam_transform()
-		# Set a short timer to enable the "End Round" button, just in case the 
-		# movement check fails
-		await get_tree().create_timer(5.0).timeout
-		$ButtonContainer/EndRoundButton.disabled = false
+		_launch_dice()
 	
 	if Input.is_action_just_pressed("reset_dice"):
 		_reset_game_state()
+
+
+func _unhandled_input(event):
+	# Handle touchscreen touches to detect upward swipes
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_start = event.get_position()
+		else:
+			# If swipe is upward and greater than threshold length...
+			if touch_start.y > event.get_position().y and \
+					touch_start.y - event.get_position().y >= SWIPE_THRESHOLD:
+				print("Upward swipe detected...")
+				if dice_state == DICE_STATE.START: _launch_dice()
 
 
 # Moves camera from starting position to directly above dice target
@@ -97,6 +108,18 @@ func _on_pressed_end_round_button():
 		print("Can't end round!\n")
 	
 	$ButtonContainer/EndRoundButton.release_focus()
+
+
+# Launch all dice forward, move camera, and enable "End Round" button
+func _launch_dice():
+	dice_state = DICE_STATE.ROLLING
+	dice_moving = 5
+	get_tree().call_group("dice", "_launch_die")
+	_tween_cam_transform()
+	# Set a short timer to enable the "End Round" button, just in case the 
+	# movement check fails
+	await get_tree().create_timer(5.0).timeout
+	$ButtonContainer/EndRoundButton.disabled = false
 
 
 # Reset the game dice, camera, and UI to start-of-round state
