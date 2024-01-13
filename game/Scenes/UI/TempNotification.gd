@@ -13,6 +13,8 @@ var notif_text := ""
 func _ready():
 	# Set label text
 	$NotifLabel.text = notif_text
+	# Apply theme to all child elements
+	theme = load("res://Themes/MainTheme.tres")
 	# Wait until lifetime expires, then remove
 	await get_tree().create_timer(NOTIF_LIFETIME).timeout
 	_fade_out_and_remove()
