@@ -4,6 +4,7 @@ game/.godot/
 # Export file ignores
 game/export_presets.cfg
 *.apk
+*.idsig
 *.exe
 
 # Blender backup files
