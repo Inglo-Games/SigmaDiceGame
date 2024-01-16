@@ -19,7 +19,11 @@ func _update_discard_lists(discards:Array[Vector2i]):
 
 # Update the light icons representing pairs scored by player
 func _update_score_lights(scores:Array[int]):
-	pass
+	for value in range(len(scores)):
+		if value == 0 or value == 1:
+			continue
+		var node = get_node("VBox/ScoreLightCont/Row%d" % value)
+		node.set_lights(scores[value])
 
 
 # Update total score label

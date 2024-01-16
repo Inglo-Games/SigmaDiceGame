@@ -2,10 +2,10 @@ extends VBoxContainer
 
 # X coordinate for where panel should sit when "in view", relative to start pos
 const SLIDE_TARGET_X := 256.0
-const SLIDE_TARGET_Y := 512.0
+const SLIDE_TARGET_Y := 1024.0
 
 # Track whether panel is currently in the player's viewport
-var is_in_view := false 
+var is_in_view := false
 
 
 # Triggered by ExpanderButton; slide panel into or out of view depending on
@@ -25,7 +25,8 @@ func _slide_panel_into_view():
 	
 	# Use a tween to slide panel
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", target_pos, 1.5).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", target_pos, 0.5)
+	tween.set_trans(Tween.TRANS_BACK)
 	tween.play()
 	await tween.finished
 	
@@ -40,7 +41,8 @@ func _slide_panel_out_view():
 	var target_pos = Vector2(position.x, position.y + SLIDE_TARGET_Y)
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", target_pos, 1.5).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "position", target_pos, 0.5)
+	tween.set_trans(Tween.TRANS_BACK)
 	tween.play()
 	await tween.finished
 	
