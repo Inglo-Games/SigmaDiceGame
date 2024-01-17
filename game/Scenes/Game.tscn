@@ -74,8 +74,8 @@ text = "End Round"
 [node name="ScoreboardPanel" parent="." instance=ExtResource("4_56du8")]
 anchors_preset = 12
 anchor_top = 1.0
-offset_top = -61.0
-offset_bottom = 0.0
+offset_top = -56.0
+offset_bottom = 1801.0
 grow_vertical = 0
 
 [connection signal="pressed" from="ButtonContainer/EndRoundButton" to="." method="_on_pressed_end_round_button"]

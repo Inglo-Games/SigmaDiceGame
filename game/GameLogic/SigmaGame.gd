@@ -13,6 +13,8 @@ const SCORE_SCALING_BONUS := 20
 # Signals to alert game that an error message needs to be displayed
 signal selection_error_two_pairs
 signal selection_error_bad_discard
+# Signal to end the game
+signal game_ended
 
 # Keeps track of how many of each sum has been scored by the player
 var score_pair_count : Array[int] = []
@@ -73,6 +75,9 @@ func end_round(dice:Dictionary) -> bool :
 	for index in range(len(discard_pile)):
 		if dice["discard"][0] == discard_pile[index].x:
 			discard_pile[index].y += 1
+			
+			if discard_pile[index].y >= END_GAME_THRESHOLD:
+				game_ended.emit()
 			return true
 	
 	# If it's not in the discard pile already and the discard pile isn't full,

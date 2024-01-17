@@ -43,6 +43,7 @@ func _ready():
 			node.connect("finished_moving", _decrement_moving_dice_count)
 	game_state.connect("selection_error_two_pairs", _on_error_two_pairs)
 	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
+	game_state.connect("game_ended", _on_game_over)
 
 
 func _input(_event):
@@ -142,3 +143,10 @@ func _on_error_bad_discard(discard_vals:Array):
 			[discard_vals[0], discard_vals[1], discard_vals[2]]
 	var notif = TempNotifFactory.create_notif(msg)
 	add_child(notif)
+
+
+# Display the game over popup
+func _on_game_over():
+	var popup = preload("res://Scenes/UI/GameOverPanel.tscn").instantiate()
+	popup.set_score_label(game_state.calculate_total_score())
+	add_child(popup)

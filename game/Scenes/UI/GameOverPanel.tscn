@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpfl72c6t38vj"]
+
+[ext_resource type="Script" path="res://Scenes/UI/GameOverPanel.gd" id="1_ahe6m"]
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_gafo1"]
+
+[node name="GameOverPanel" type="PanelContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(350, 250)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gafo1")
+script = ExtResource("1_ahe6m")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Header" type="Label" parent="VBox"]
+layout_mode = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Final score: 00000"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return to Menu
+"
+
+[connection signal="pressed" from="VBox/Button" to="." method="_on_quit_button_pressed"]
