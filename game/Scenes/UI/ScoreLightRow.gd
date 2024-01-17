@@ -30,28 +30,35 @@ func _ready():
 												+ sep_const * 3)
 	var num_lights : int = floor(avbl_width / (green_led_width + sep_const))
 	
-	# Duplicate $GreenLed0 until there are num_lights of them
+	# Duplicate $Led2 until there are num_lights of them
 	for index in range(num_lights - 1):
 		# Keep groups and scripts, not instance
-		add_child($Led2.duplicate(6))
+		add_child($Led2.duplicate(DUPLICATE_SCRIPTS | DUPLICATE_GROUPS))
 
 
 # Set light textures based on current number of points for this value
 func set_lights(points:int):
 	
-	# If points are 0 or more than 2, both red LEDs are "off"
+	# If points are 0-2, we only need to modify the red lights
 	if points == 0:
-		get_tree().call_group("red_leds", "set_texture", LED_RED_OFF)
-		get_tree().call_group("green_leds", "set_texture", LED_GREEN_OFF)
+		$Led0.set_texture(LED_RED_OFF)
+		$Led1.set_texture(LED_RED_OFF)
 	
 	elif points == 1:
 		$Led0.set_texture(LED_RED_ON)
 		$Led1.set_texture(LED_RED_OFF)
-		get_tree().call_group("green_leds", "set_texture", LED_GREEN_OFF)
 	
 	elif points == 2:
-		get_tree().call_group("red_leds", "set_texture", LED_RED_ON)
-		get_tree().call_group("green_leds", "set_texture", LED_GREEN_OFF)
+		$Led0.set_texture(LED_RED_ON)
+		$Led1.set_texture(LED_RED_ON)
 	
+	# If points is more than 2, go through as many lights as there are points 
+	# and set them to green
 	else:
-		pass
+		var counter = points
+		for child_node in get_children():
+			if child_node is NinePatchRect:
+				child_node.set_texture(LED_GREEN_ON)
+				counter -= 1
+				if counter <= 0:
+					break
