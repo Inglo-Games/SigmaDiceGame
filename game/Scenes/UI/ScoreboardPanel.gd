@@ -16,6 +16,7 @@ func _on_expander_button_pressed():
 		_slide_panel_out_view()
 	else:
 		_slide_panel_into_view()
+	$ExpanderButton.release_focus()
 
 
 # Slide the panel up into the player's viewport
