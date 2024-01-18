@@ -15,6 +15,7 @@ func _ready():
 
 # Triggered by "Back" button; change scene to main menu
 func _on_back_button_pressed():
+	$ButtonClickAudio.play()
 	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
 
 
@@ -32,9 +33,11 @@ func _on_bgm_slider_value_changed(value:float):
 
 # Triggered by ColorPicker1 value being changed; updates first color setting
 func _on_color_picker_1_color_changed(color:Color):
+	$ButtonClickAudio.play()
 	ProjectSettings.set_setting(COLOR_A_SETTING, color)
 
 
 # Triggered by ColorPicker2 value being changed; updates second color setting
 func _on_color_picker_2_color_changed(color:Color):
+	$ButtonClickAudio.play()
 	ProjectSettings.set_setting(COLOR_B_SETTING, color)
