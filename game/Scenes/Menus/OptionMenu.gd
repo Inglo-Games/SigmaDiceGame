@@ -3,14 +3,12 @@ extends Control
 
 const COLOR_A_SETTING = "user_settings/colors/dice_color_a"
 const COLOR_B_SETTING = "user_settings/colors/dice_color_b"
-const BGM_SETTING = "user_settings/audio/bgm_level"
-const SFX_SETTING = "user_settings/audio/sfx_level"
 
 
 func _ready():
 	# Set widgets to reflect current values
-	$GridContainer/SfxSlider.value = ProjectSettings.get_setting(SFX_SETTING)
-	$GridContainer/BgmSlider.value = ProjectSettings.get_setting(BGM_SETTING)
+	$GridContainer/SfxSlider.value = ProjectSettings.get_setting(AudioManager.SFX_SETTING)
+	$GridContainer/BgmSlider.value = ProjectSettings.get_setting(AudioManager.BGM_SETTING)
 	$GridContainer/ColorPickerA.color = ProjectSettings.get_setting(COLOR_A_SETTING)
 	$GridContainer/ColorPickerB.color = ProjectSettings.get_setting(COLOR_B_SETTING)
 
@@ -22,12 +20,14 @@ func _on_back_button_pressed():
 
 # Triggered by SfxSlider value being changed; updates SFX level setting
 func _on_sfx_slider_value_changed(value:float):
-	ProjectSettings.set_setting(SFX_SETTING, value)
+	ProjectSettings.set_setting(AudioManager.SFX_SETTING, value)
+	AudioManager.set_audio_busses()
 
 
 # Triggered by BgmSlider value being changed; updates BGM level setting
 func _on_bgm_slider_value_changed(value:float):
-	ProjectSettings.set_setting(BGM_SETTING, value)
+	ProjectSettings.set_setting(AudioManager.BGM_SETTING, value)
+	AudioManager.set_audio_busses()
 
 
 # Triggered by ColorPicker1 value being changed; updates first color setting
