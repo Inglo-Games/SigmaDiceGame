@@ -1,0 +1,243 @@
+{
+	"connections": [
+		{
+			"from": "shape",
+			"from_port": 0,
+			"to": "scale",
+			"to_port": 0
+		},
+		{
+			"from": "scale",
+			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "dirt",
+			"from_port": 0,
+			"to": "tonality",
+			"to_port": 0
+		},
+		{
+			"from": "tonality",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "scale",
+			"from_port": 0,
+			"to": "tonality_2",
+			"to_port": 0
+		},
+		{
+			"from": "tonality_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 2
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@3047",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 257.999969,
+				"y": -35.999996
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.01,
+				"emission_energy": 1,
+				"flags_transparent": false,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "dirt",
+			"node_position": {
+				"x": -465.416626,
+				"y": 149.972229
+			},
+			"parameters": {
+				"d_scale": 6,
+				"param0": 2,
+				"param1": 11
+			},
+			"seed_int": 3123294208,
+			"type": "dirt"
+		},
+		{
+			"name": "shape",
+			"node_position": {
+				"x": -753.726685,
+				"y": -70.549995
+			},
+			"parameters": {
+				"edge": 0.1,
+				"radius": 0.6,
+				"shape": 1,
+				"sides": 4
+			},
+			"seed_int": 0,
+			"type": "shape"
+		},
+		{
+			"generic_size": 1,
+			"name": "scale",
+			"node_position": {
+				"x": -590.079102,
+				"y": -70.085136
+			},
+			"parameters": {
+				"cx": 0,
+				"cy": 0,
+				"scale_x": 0.04,
+				"scale_y": 0.465
+			},
+			"seed_int": 0,
+			"type": "scale"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": -290.121521,
+				"y": 80.824806
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 0,
+					"points": [
+						{
+							"a": 1,
+							"b": 0,
+							"g": 0,
+							"pos": 0,
+							"r": 0
+						},
+						{
+							"a": 1,
+							"b": 0,
+							"g": 0.730591,
+							"pos": 1,
+							"r": 0.820312
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "tonality",
+			"node_position": {
+				"x": -251.036758,
+				"y": 149.412567
+			},
+			"parameters": {
+				"curve": {
+					"points": [
+						{
+							"ls": 0,
+							"rs": 0.136473,
+							"x": 0,
+							"y": 0
+						},
+						{
+							"ls": 0.838812,
+							"rs": -0,
+							"x": 1,
+							"y": 0.57971
+						}
+					],
+					"type": "Curve"
+				}
+			},
+			"seed_int": 0,
+			"type": "tonality"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -80.981201,
+				"y": 84.523682
+			},
+			"parameters": {
+				"amount1": 0.8,
+				"blend_type1": 3
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "tonality_2",
+			"node_position": {
+				"x": -138.868103,
+				"y": -48.447311
+			},
+			"parameters": {
+				"curve": {
+					"points": [
+						{
+							"ls": -0,
+							"rs": -0.44664,
+							"x": 0,
+							"y": 1
+						},
+						{
+							"ls": -0.096334,
+							"rs": 0,
+							"x": 1,
+							"y": 0.760064
+						}
+					],
+					"type": "Curve"
+				}
+			},
+			"seed_int": 0,
+			"type": "tonality"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}
