@@ -1,0 +1,143 @@
+{
+	"connections": [
+		{
+			"from": "tonality",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "tonality",
+			"to_port": 0
+		},
+		{
+			"from": "directional_noise",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "clouds_noise",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@322",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 0,
+				"y": 0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 0,
+					"g": 0.804688,
+					"r": 0.042352,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 1
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "clouds_noise",
+			"node_position": {
+				"x": -756.720032,
+				"y": -89.799942
+			},
+			"parameters": {
+				"n_scale": 6,
+				"param0": 11,
+				"param1": 2
+			},
+			"seed_int": 0,
+			"type": "clouds_noise"
+		},
+		{
+			"name": "tonality",
+			"node_position": {
+				"x": -203.720032,
+				"y": -1.799942
+			},
+			"parameters": {
+				"curve": {
+					"points": [
+						{
+							"ls": 0,
+							"rs": 0.33717,
+							"x": 0,
+							"y": 0.853462
+						},
+						{
+							"ls": 0.12131,
+							"rs": -0,
+							"x": 1,
+							"y": 1
+						}
+					],
+					"type": "Curve"
+				}
+			},
+			"seed_int": 0,
+			"type": "tonality"
+		},
+		{
+			"name": "directional_noise",
+			"node_position": {
+				"x": -754.280151,
+				"y": 34.062195
+			},
+			"parameters": {
+				"n_scale": 4,
+				"param0": 0,
+				"param1": 11
+			},
+			"seed_int": 0,
+			"type": "directional_noise"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -485.280151,
+				"y": -53.937805
+			},
+			"parameters": {
+				"amount1": 0.33,
+				"blend_type1": 1
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}
