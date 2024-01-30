@@ -9,3 +9,6 @@ game/export_presets.cfg
 
 # Blender backup files
 blender_models/*.blend1
+# Blender materials files (don't include in git since they can be re-exported from Material Maker)
+blender_models/*.png
+blender_models/*.exr
