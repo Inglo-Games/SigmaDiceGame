@@ -34,7 +34,6 @@ script = ExtResource("1_7np7b")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-instance_shader_parameters/outline_color = null
 mesh = SubResource("BoxMesh_052ak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
