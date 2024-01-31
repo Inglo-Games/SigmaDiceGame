@@ -7,6 +7,12 @@ func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
+# Triggered by "Play Tutorial" button
+func _on_tutorial_button_pressed():
+	$ButtonClickAudio.play()
+	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
+
+
 # Triggered by "Options" button; goes to options menu scene
 func _on_options_button_pressed():
 	$ButtonClickAudio.play()

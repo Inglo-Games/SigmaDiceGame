@@ -34,6 +34,10 @@ text = "Sigma Dice Game"
 layout_mode = 2
 text = "Play Game"
 
+[node name="TutorialButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play Tutorial"
+
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Options"
@@ -47,5 +51,6 @@ stream = ExtResource("3_vfygy")
 bus = &"sfx"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

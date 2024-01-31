@@ -1,7 +1,10 @@
 extends Node3D
-
+class_name GameEnvironment
 
 enum DICE_STATE {START, ROLLING, FINISHED} 
+
+signal dice_stopped
+signal round_ended
 
 # Transform for Camera's starting position
 const CAM_START_POS = Transform3D(
@@ -94,9 +97,12 @@ func _create_dice_dict() -> Dictionary :
 # dice are moving
 func _decrement_moving_dice_count():
 	dice_moving -= 1
+	print("Dice left moving: %d" % dice_moving)
 	if dice_moving <= 0:
+		print("All the dice stopped!")
 		dice_state = DICE_STATE.FINISHED
 		$ButtonContainer/EndRoundButton.disabled = false
+		dice_stopped.emit()
 
 
 # Callback for "End Round" button
@@ -105,6 +111,7 @@ func _on_pressed_end_round_button():
 		print("Current scores:\n%s\n%s\n" % [game_state.score_pair_count, game_state.discard_pile])
 		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
 		_reset_game_state()
+		round_ended.emit()
 	else:
 		print("Can't end round!\n")
 	

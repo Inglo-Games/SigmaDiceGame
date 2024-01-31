@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+
+signal scoreboard_toggled
+
 # X coordinate for where panel should sit when "in view", relative to start pos
 const SLIDE_TARGET_X := 256.0
 const SLIDE_TARGET_Y := 1024.0
@@ -17,6 +20,7 @@ func _on_expander_button_pressed():
 	else:
 		_slide_panel_into_view()
 	$ExpanderButton.release_focus()
+	scoreboard_toggled.emit()
 
 
 # Slide the panel up into the player's viewport

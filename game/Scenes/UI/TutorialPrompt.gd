@@ -23,9 +23,9 @@ func _ready():
 	$PromptContainer/PromptLabel.text = prompt_text
 
 
-func _unhandled_input(event):
+func _input(event):
 	# Dismiss prompt if touched...
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch or event is InputEventKey:
 		if event.pressed:
 			prompt_dismissed.emit()
 			self.queue_free()
