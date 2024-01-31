@@ -15,14 +15,14 @@ const tutorial_lines := [
 ]
 # Locations to put tutorial prompts
 const tutorial_anchors := [
-	Vector4(0.2, 0.8, 0.2, 0.3),
-	Vector4(0.2, 0.8, 0.5, 0.6),
-	Vector4(0.2, 0.8, 0.7, 0.8),
-	Vector4(0.2, 0.8, 0.7, 0.8),
-	Vector4(0.2, 0.8, 0.2, 0.3),
-	Vector4(0.2, 0.8, 0.3, 0.4),
-	Vector4(0.2, 0.8, 0.8, 0.9),
-	Vector4(0.2, 0.8, 0.45, 0.55)
+	Vector4(0.05, 0.95, 0.2, 0.3),
+	Vector4(0.05, 0.95, 0.5, 0.6),
+	Vector4(0.05, 0.95, 0.7, 0.8),
+	Vector4(0.05, 0.95, 0.7, 0.8),
+	Vector4(0.05, 0.95, 0.2, 0.3),
+	Vector4(0.05, 0.95, 0.3, 0.4),
+	Vector4(0.05, 0.95, 0.8, 0.9),
+	Vector4(0.05, 0.95, 0.45, 0.55)
 ]
 
 # Record step of the tutorial that player is on

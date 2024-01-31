@@ -5,8 +5,8 @@ class_name TutorialPrompt
 signal prompt_dismissed
 
 # Set default anchor point values
-var anc_left := 0.2
-var anc_right := 0.8
+var anc_left := 0.05
+var anc_right := 0.95
 var anc_top := 0.8
 var anc_bottom := 0.9
 # Save prompt text to set during _ready()
