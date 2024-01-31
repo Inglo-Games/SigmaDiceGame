@@ -22,7 +22,7 @@ var is_moving := false
 func _physics_process(_delta):
 	# If moving, check magnitude of velocity vector to see if stopped
 	if is_moving:
-		if linear_velocity.is_zero_approx():
+		if linear_velocity.length() <= 0.0001:
 			is_moving = false
 			emit_signal("finished_moving")
 	
