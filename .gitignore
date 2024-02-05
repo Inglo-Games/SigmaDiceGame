@@ -3,6 +3,8 @@ game/.godot/
 
 # Export file ignores
 game/export_presets.cfg
+game/android/*
+*.aab
 *.apk
 *.idsig
 *.exe
