@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5g6ys2nt7ya5"]
+[gd_scene load_steps=3 format=3 uid="uid://b5g6ys2nt7ya5"]
 
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_k5tsi"]
 [ext_resource type="Script" path="res://Scenes/UI/TempNotification.gd" id="1_nk5v0"]
 
 [node name="TempNotification" type="PanelContainer"]
@@ -8,6 +9,7 @@ anchor_left = 0.2
 anchor_top = 0.8
 anchor_right = 0.8
 anchor_bottom = 0.9
+theme = ExtResource("1_k5tsi")
 script = ExtResource("1_nk5v0")
 
 [node name="NotifLabel" type="Label" parent="."]
