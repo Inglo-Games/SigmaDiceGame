@@ -1,23 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnuyb0p8l4syw"]
+[gd_scene load_steps=5 format=3 uid="uid://bnuyb0p8l4syw"]
 
 [ext_resource type="Script" path="res://Scenes/Die.gd" id="1_7np7b"]
-[ext_resource type="Shader" path="res://Materials/SilhouetteGlow.gdshader" id="2_btk8p"]
 [ext_resource type="PackedScene" uid="uid://dwykr8euvxcab" path="res://Meshes/basic_die.glb" id="2_m3mmb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_882w2"]
-render_priority = 1
-shader = ExtResource("2_btk8p")
-shader_parameter/outline_width = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuaq3"]
-next_pass = SubResource("ShaderMaterial_882w2")
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-
-[sub_resource type="BoxMesh" id="BoxMesh_052ak"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_uuaq3")
-size = Vector3(0.55, 0.55, 0.55)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2ss1"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -33,10 +17,8 @@ script = ExtResource("1_7np7b")
 [node name="basic_die" parent="." instance=ExtResource("2_m3mmb")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_052ak")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0, 0)
 shape = SubResource("BoxShape3D_y2ss1")
 
 [node name="FaceDetectorRaycast" type="RayCast3D" parent="."]

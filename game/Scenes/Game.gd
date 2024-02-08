@@ -87,7 +87,7 @@ func _create_dice_dict() -> Dictionary :
 				new_dict["color_a"].append(die.get_value())
 			glow_color_b:
 				new_dict["color_b"].append(die.get_value())
-			Color(0, 0, 0, 0):
+			Die.GLOW_NONE:
 				new_dict["discard"].append(die.get_value())
 	
 	return new_dict

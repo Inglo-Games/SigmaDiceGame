@@ -3,7 +3,7 @@ extends RigidBody3D
 
 
 # Transparent color value for background glow
-const GLOW_NONE := Color(0, 0, 0, 0)
+const GLOW_NONE := Color(0, 0, 0, 1)
 
 signal color_selection_changed
 signal finished_moving
@@ -16,7 +16,19 @@ signal finished_moving
 @onready var original_pos := global_position
 @onready var glow_color := GLOW_NONE
 
+# Material used for the die pips
+var pip_material
+
+# Record whether die is currently moving
 var is_moving := false
+
+
+func _ready():
+	# Override material 1 (the pip material) so that changing colors will only
+	# affect this instance
+	$basic_die/die.set_surface_override_material(1, \
+				$basic_die/die.get_mesh().surface_get_material(1).duplicate())
+	pip_material = $basic_die/die.get_surface_override_material(1)
 
 
 func _physics_process(_delta):
@@ -71,7 +83,7 @@ func _change_glow_color():
 			glow_color = GLOW_B
 		GLOW_NONE:
 			glow_color = GLOW_A
-	$MeshInstance3D.set_instance_shader_parameter("outline_color", glow_color)
+	pip_material.albedo_color = glow_color
 
 
 # Reset die to original positions and clear outline glow
@@ -82,7 +94,7 @@ func _reset_die():
 	
 	is_moving = false
 	glow_color = GLOW_NONE
-	$MeshInstance3D.set_instance_shader_parameter("outline_color", glow_color)
+	pip_material.albedo_color = glow_color
 	emit_signal("color_selection_changed")
 
 
