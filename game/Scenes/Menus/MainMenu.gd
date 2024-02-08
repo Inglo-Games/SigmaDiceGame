@@ -1,6 +1,12 @@
 extends Control
 
 
+# Handle "Back" action in Android OS
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().quit()
+
+
 # Triggered by "Play Game" button; goes to game scene
 func _on_play_button_pressed():
 	$ButtonClickAudio.play()

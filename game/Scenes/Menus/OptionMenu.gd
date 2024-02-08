@@ -13,6 +13,12 @@ func _ready():
 	$GridContainer/ColorPickerB.color = ProjectSettings.get_setting(COLOR_B_SETTING)
 
 
+# Handle "Back" action in Android OS
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
+
+
 # Triggered by "Back" button; change scene to main menu
 func _on_back_button_pressed():
 	$ButtonClickAudio.play()

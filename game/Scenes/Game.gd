@@ -71,6 +71,12 @@ func _unhandled_input(event):
 				if dice_state == DICE_STATE.START: _launch_dice()
 
 
+# Handle "Back" action in Android OS
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		add_child(load("res://Scenes/UI/BackPrompt.tscn").instantiate())
+
+
 # Moves camera from starting position to directly above dice target
 func _tween_cam_transform():
 	var tween = create_tween()
