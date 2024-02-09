@@ -21,6 +21,9 @@ const CAM_END_POS = Transform3D(
 		Vector3(0, 6.5, -7)
 )
 
+# Name for saved game file
+const SAVE_GAME_FILE := "user://game_data.res"
+
 # Length threshold for a touchscreen swipe
 const SWIPE_THRESHOLD := 192.0
 
@@ -47,6 +50,11 @@ func _ready():
 	game_state.connect("selection_error_two_pairs", _on_error_two_pairs)
 	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
 	game_state.connect("game_ended", _on_game_over)
+	
+	# Check if a saved game exists and load it if so
+	if(ResourceLoader.exists(SAVE_GAME_FILE)):
+		game_state = ResourceLoader.load(SAVE_GAME_FILE)
+		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
 
 
 func _input(_event):
@@ -75,6 +83,12 @@ func _unhandled_input(event):
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		add_child(load("res://Scenes/UI/BackPrompt.tscn").instantiate())
+
+
+# Record the game state as a resource file
+func _save_game_data():
+	if ResourceSaver.save(game_state, SAVE_GAME_FILE) != OK:
+		print("Error saving game state!")
 
 
 # Moves camera from starting position to directly above dice target
@@ -117,6 +131,7 @@ func _on_pressed_end_round_button():
 		print("Current scores:\n%s\n%s\n" % [game_state.score_pair_count, game_state.discard_pile])
 		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
 		_reset_game_state()
+		_save_game_data()
 		round_ended.emit()
 	else:
 		print("Can't end round!\n")
@@ -163,3 +178,5 @@ func _on_game_over():
 	var popup = preload("res://Scenes/UI/GameOverPanel.tscn").instantiate()
 	popup.set_score_label(game_state.calculate_total_score())
 	add_child(popup)
+	# Remove save game file since game is finished
+	DirAccess.remove_absolute(SAVE_GAME_FILE)

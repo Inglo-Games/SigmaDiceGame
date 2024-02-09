@@ -1,5 +1,5 @@
 class_name SigmaGame
-extends Node
+extends Resource
 
 
 # Number of times a value has to be discarded before game ends
@@ -17,11 +17,11 @@ signal selection_error_bad_discard
 signal game_ended
 
 # Keeps track of how many of each sum has been scored by the player
-var score_pair_count : Array[int] = []
+@export var score_pair_count : Array[int] = []
 # Keeps track of the "discard pile" of dice that weren't paired up each round
 # as Vector2i's, where x is a die value and y is the number of times that value
 # has been the discard value
-var discard_pile : Array[Vector2i] = []
+@export var discard_pile : Array[Vector2i] = []
 
 
 func _init():
