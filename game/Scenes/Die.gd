@@ -100,9 +100,9 @@ func _reset_die():
 
 # Randomize the rotation values
 func _randomize_orientation():
-	var x_rot := randf_range(0.0, 2*PI)
-	var y_rot := randf_range(0.0, 2*PI)
-	var z_rot := randf_range(0.0, 2*PI)
+	var x_rot := RngManager.rng.randf_range(0.0, 2*PI)
+	var y_rot := RngManager.rng.randf_range(0.0, 2*PI)
+	var z_rot := RngManager.rng.randf_range(0.0, 2*PI)
 	rotation = Vector3(x_rot, y_rot, z_rot)
 
 
@@ -112,12 +112,12 @@ func _launch_die():
 	_randomize_orientation()
 	# Apply a force with a large forward force and a small upward force
 	apply_impulse(
-		Vector3(0, randf_range(0,5), randf_range(-20, -25)), 
+		Vector3(0, RngManager.rng.randf_range(0,5), RngManager.rng.randf_range(-20, -25)), 
 		Vector3.ZERO
 	)
 	# Apply a random rotational force around the x (sideways) axis
 	apply_torque_impulse(
-		Vector3(randf_range(50.0, 250.0), 0, 0)
+		Vector3(RngManager.rng.randf_range(50.0, 250.0), 0, 0)
 	)
 	# Delay setting is_moving so it doesn't trigger on the next frame
 	await get_tree().create_timer(0.02).timeout

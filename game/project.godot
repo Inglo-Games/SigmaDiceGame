@@ -24,6 +24,7 @@ buses/channel_disable_threshold_db=-79.0
 [autoload]
 
 AudioManager="*res://Scenes/Managers/AudioManager.gd"
+RngManager="*res://Scenes/Managers/RNGManager.gd"
 
 [display]
 

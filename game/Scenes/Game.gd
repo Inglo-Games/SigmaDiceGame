@@ -55,6 +55,7 @@ func _ready():
 	if(ResourceLoader.exists(SAVE_GAME_FILE)):
 		game_state = ResourceLoader.load(SAVE_GAME_FILE)
 		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
+		RngManager.restore_rng_state(game_state.rng_state)
 
 
 func _input(_event):

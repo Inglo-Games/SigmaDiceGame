@@ -22,6 +22,9 @@ signal game_ended
 # as Vector2i's, where x is a die value and y is the number of times that value
 # has been the discard value
 @export var discard_pile : Array[Vector2i] = []
+# The current state of the random number generator; ensures randomness is
+# consistent so players can't save-scum
+@export var rng_state : int = RngManager.get_rng_state()
 
 
 func _init():
@@ -66,6 +69,9 @@ func end_round(dice:Dictionary) -> bool :
 	# First ensure that the given set of dice is a legal selection
 	if not _check_selection_legality(dice):
 		return false
+	
+	# Update the saved RNG state
+	rng_state = RngManager.get_rng_state()
 	
 	# First add the sums of each color pair
 	score_pair_count[dice["color_a"][0] + dice["color_a"][1]] += 1
