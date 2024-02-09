@@ -10,7 +10,12 @@ func _notification(what):
 # Triggered by "Play Game" button; goes to game scene
 func _on_play_button_pressed():
 	$ButtonClickAudio.play()
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	# If there's a save game file, ask player to continue...
+	if FileAccess.file_exists("user://game_data.res"):
+		add_child(load("res://Scenes/UI/ContinuePrompt.tscn").instantiate())
+	# Otherwise just start the game
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
 # Triggered by "Play Tutorial" button

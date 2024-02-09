@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl3f6guqnxy8s"]
+
+[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_p7lbj"]
+[ext_resource type="Script" path="res://Scenes/UI/ContinuePrompt.gd" id="2_lton4"]
+
+[node name="ContinuePrompt" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p7lbj")
+script = ExtResource("2_lton4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.203922, 0.203922, 0.203922, 0.623529)
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -77.0
+offset_right = 322.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Continue previous game?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Continue "
+
+[node name="NewButton" type="Button" parent="ColorRect/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " New Game "
+
+[connection signal="pressed" from="ColorRect/PanelContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ColorRect/PanelContainer/VBoxContainer/HBoxContainer/NewButton" to="." method="_on_new_button_pressed"]
