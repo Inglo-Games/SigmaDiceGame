@@ -27,12 +27,12 @@ const SAVE_GAME_FILE := "user://game_data.res"
 # Length threshold for a touchscreen swipe
 const SWIPE_THRESHOLD := 192.0
 
-# Game state and logic object
-@onready var game_state = SigmaGame.new()
-
 # Get the colors for the dice selection glow from user settings
 @onready var glow_color_a = ProjectSettings.get_setting("user_settings/colors/dice_color_a")
 @onready var glow_color_b = ProjectSettings.get_setting("user_settings/colors/dice_color_b")
+
+# Game state and logic object
+var game_state
 
 # Track state of the dice (start of round, rolling, or finished moving)
 var dice_state := DICE_STATE.START
@@ -43,6 +43,14 @@ var touch_start := Vector2.ZERO
 
 
 func _ready():
+	# Check if a saved game exists and load it if so
+	if(ResourceLoader.exists(SAVE_GAME_FILE)):
+		game_state = ResourceLoader.load(SAVE_GAME_FILE)
+		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
+		RngManager.restore_rng_state(game_state.rng_state)
+	else:
+		game_state = SigmaGame.new()
+	
 	# Connect signals from each die to relevant functions
 	for node in get_children():
 		if node is Die:
@@ -51,12 +59,6 @@ func _ready():
 	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
 	game_state.connect("game_ended", _on_game_over)
 	
-	# Check if a saved game exists and load it if so
-	if(ResourceLoader.exists(SAVE_GAME_FILE)):
-		game_state = ResourceLoader.load(SAVE_GAME_FILE)
-		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
-		RngManager.restore_rng_state(game_state.rng_state)
-
 
 func _input(_event):
 	
