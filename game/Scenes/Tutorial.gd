@@ -4,7 +4,7 @@ class_name GameTutorial
 
 # Lines to display on tutorial prompts
 const tutorial_lines := [
-	"Swipe up or tap “Roll” to roll the dice.",
+	"Swipe up to roll the dice.",
 	"Tap on each die to assign it a color.  You need to have two dice of each color and one uncolored die at the end of each round.",
 	"Tap the “End round” button to end the round.",
 	"Tap the “^” button to see the scoreboard.",
@@ -25,12 +25,19 @@ const tutorial_anchors := [
 	Vector4(0.05, 0.95, 0.45, 0.55)
 ]
 
+
 # Record step of the tutorial that player is on
 var tut_step := 0
 
 
 func _ready():
+	# Remove any existing save file so tutorial starts from new game
+	if FileAccess.file_exists(SAVE_GAME_FILE):
+		DirAccess.remove_absolute(SAVE_GAME_FILE)
+	
+	# Perform all connections in the parent class _ready() function
 	super._ready()
+	
 	# Connect signals to relevant tutorial prompt functions
 	dice_stopped.connect(_on_dice_stopped_moving)
 	round_ended.connect(_on_round_ended)
@@ -38,6 +45,7 @@ func _ready():
 	for node in get_children():
 		if node is Die:
 			node.color_selection_changed.connect(_on_die_assigned)
+	
 	# Add initial tutorial prompt to screen
 	_add_tut_prompt()
 
