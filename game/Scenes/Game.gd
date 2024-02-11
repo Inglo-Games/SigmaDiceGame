@@ -124,7 +124,7 @@ func _decrement_moving_dice_count():
 	if dice_moving <= 0:
 		print("All the dice stopped!")
 		dice_state = DICE_STATE.FINISHED
-		$ButtonContainer/EndRoundButton.disabled = false
+		$EndRoundButton.disabled = false
 		dice_stopped.emit()
 
 
@@ -139,7 +139,7 @@ func _on_pressed_end_round_button():
 	else:
 		print("Can't end round!\n")
 	
-	$ButtonContainer/EndRoundButton.release_focus()
+	$EndRoundButton.release_focus()
 
 
 # Launch all dice forward, move camera, and enable "End Round" button
@@ -151,7 +151,7 @@ func _launch_dice():
 	# Set a short timer to enable the "End Round" button, just in case the 
 	# movement check fails
 	await get_tree().create_timer(5.0).timeout
-	$ButtonContainer/EndRoundButton.disabled = false
+	$EndRoundButton.disabled = false
 
 
 # Reset the game dice, camera, and UI to start-of-round state
@@ -159,7 +159,7 @@ func _reset_game_state():
 	dice_state = DICE_STATE.START
 	get_tree().call_group("dice", "_reset_die")
 	$Camera3D.transform = CAM_START_POS
-	$ButtonContainer/EndRoundButton.disabled = true
+	$EndRoundButton.disabled = true
 
 
 # Display a temp notification alerting player of selection error
@@ -183,3 +183,8 @@ func _on_game_over():
 	add_child(popup)
 	# Remove save game file since game is finished
 	DirAccess.remove_absolute(SAVE_GAME_FILE)
+
+
+# Triggered by "Main Menu" button; displays a prompt to return to menu
+func _on_back_button_pressed():
+	add_child(load("res://Scenes/UI/BackPrompt.tscn").instantiate())
