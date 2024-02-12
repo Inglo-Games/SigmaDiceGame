@@ -23,6 +23,8 @@ const CAM_END_POS = Transform3D(
 
 # Name for saved game file
 const SAVE_GAME_FILE := "user://game_data.res"
+# Name for high score file
+const SCORES_FILE := "user://scores.csv"
 
 # Length threshold for a touchscreen swipe
 const SWIPE_THRESHOLD := 192.0
@@ -178,11 +180,26 @@ func _on_error_bad_discard(discard_vals:Array):
 
 # Display the game over popup
 func _on_game_over():
+	var final_score : int = game_state.calculate_total_score()
 	var popup = preload("res://Scenes/UI/GameOverPanel.tscn").instantiate()
-	popup.set_score_label(game_state.calculate_total_score())
+	popup.set_score_label(final_score)
 	add_child(popup)
+	_record_player_final_score(final_score)
 	# Remove save game file since game is finished
 	DirAccess.remove_absolute(SAVE_GAME_FILE)
+
+
+# Record the player's final score and date/time in a file
+func _record_player_final_score(score:int):
+	# Create an array of data to be stored
+	var data = PackedStringArray([
+			str(score),
+			Time.get_datetime_string_from_system(false, true)
+	])
+	# Write data to the file
+	var score_file = FileAccess.open(SCORES_FILE, FileAccess.WRITE)
+	score_file.store_csv_line(data)
+	score_file.close()
 
 
 # Triggered by "Main Menu" button; displays a prompt to return to menu
