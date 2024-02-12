@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://boi486cpgr207"]
+[gd_scene load_steps=3 format=3 uid="uid://boi486cpgr207"]
 
 [ext_resource type="Texture2D" uid="uid://cbw583wq8bcc8" path="res://Assets/images/ui/score_led_blank.png" id="1_b50ot"]
 [ext_resource type="Script" path="res://Scenes/UI/ScoreLightRow.gd" id="1_o8co5"]
-[ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_v2o5u"]
 
 [node name="ScoreLightRow" type="HBoxContainer"]
-theme = ExtResource("1_v2o5u")
 script = ExtResource("1_o8co5")
 
 [node name="Label" type="Label" parent="."]
