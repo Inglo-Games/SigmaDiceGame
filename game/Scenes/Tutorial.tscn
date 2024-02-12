@@ -46,25 +46,14 @@ current = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.583143, -0.707107, -0.39993, 0.565586, -1.91925e-08, 0.824689, -0.583143, -0.707107, 0.39993, -2, 7, 5)
 
-[node name="ButtonContainer" type="HBoxContainer" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -196.0
-offset_top = -134.0
-offset_right = -16.0
-offset_bottom = -74.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("3_hxy5e")
-alignment = 1
-
-[node name="EndRoundButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
+[node name="EndRoundButton" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 368.0
+offset_bottom = 120.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("3_hxy5e")
 disabled = true
 text = "End Round"
 
@@ -78,4 +67,17 @@ grow_vertical = 0
 [node name="dice_box_street" parent="." instance=ExtResource("5_silwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25583, -5.24854)
 
-[connection signal="pressed" from="ButtonContainer/EndRoundButton" to="." method="_on_pressed_end_round_button"]
+[node name="Button" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -382.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 120.0
+grow_horizontal = 0
+theme = ExtResource("3_hxy5e")
+text = "Main Menu"
+
+[connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

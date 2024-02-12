@@ -88,3 +88,4 @@ func _on_scoreboard_toggled():
 func _on_round_ended():
 	if tut_step == 3 or tut_step == 7:
 		_add_tut_prompt()
+
