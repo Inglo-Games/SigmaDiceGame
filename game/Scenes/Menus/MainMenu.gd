@@ -1,6 +1,13 @@
 extends Control
 
 
+# Make background move each frame
+func _process(delta):
+	var bg = $ParallaxBackground/ParallaxLayer
+	# Move left and down, scaled by framerate
+	bg.motion_offset += Vector2(-83, 127) * delta
+
+
 # Handle "Back" action in Android OS
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://rg1ln7dcrvfs"]
+[gd_scene load_steps=6 format=3 uid="uid://rg1ln7dcrvfs"]
 
 [ext_resource type="Script" path="res://Scenes/Menus/MainMenu.gd" id="1_0s8gd"]
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_lujfo"]
+[ext_resource type="Texture2D" uid="uid://7rv2ua6jjkio" path="res://Assets/images/menu_bg.svg" id="3_840pb"]
 [ext_resource type="AudioStream" uid="uid://cthykgub1p0wm" path="res://Assets/sfx/click.wav" id="3_vfygy"]
+[ext_resource type="FontFile" uid="uid://cx7sr0raqrdbv" path="res://Assets/fonts/SourceSans3-SemiBold.ttf" id="4_2nkda"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +15,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lujfo")
 script = ExtResource("1_0s8gd")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1200, 2600)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 2600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_840pb")
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -27,6 +45,14 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("4_2nkda")
 theme_override_font_sizes/font_size = 92
 text = "Sigma Dice Game"
 
