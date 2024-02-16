@@ -1,4 +1,65 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8bcavu88mft3"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://8bcavu88mft3"]
+
+[ext_resource type="FontFile" uid="uid://cx7sr0raqrdbv" path="res://Assets/fonts/SourceSans3-SemiBold.ttf" id="1_4o71i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3uq1"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5f7os"]
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(1, 1, 1, 0.678431)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_813ck"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otvxg"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(1, 1, 1, 0.678431)
+shadow_size = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4heme"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 0.917647)
@@ -18,8 +79,8 @@ expand_margin_right = 24.0
 expand_margin_bottom = 24.0
 
 [resource]
-Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/colors/font_disabled_color = Color(1, 1, 1, 0.247059)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
@@ -28,7 +89,13 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 64
-Button/fonts/font = null
+Button/fonts/font = ExtResource("1_4o71i")
+Button/styles/disabled = SubResource("StyleBoxFlat_a3uq1")
+Button/styles/hover = SubResource("StyleBoxFlat_5f7os")
+Button/styles/normal = SubResource("StyleBoxFlat_813ck")
+Button/styles/pressed = SubResource("StyleBoxFlat_otvxg")
+GridContainer/constants/h_separation = 18
+GridContainer/constants/v_separation = 32
 HBoxContainer/constants/separation = 40
 Label/font_sizes/font_size = 36
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_4heme")
