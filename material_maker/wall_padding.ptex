@@ -13,12 +13,6 @@
 			"to_port": 0
 		},
 		{
-			"from": "tonality",
-			"from_port": 0,
-			"to": "Material",
-			"to_port": 0
-		},
-		{
 			"from": "reroute",
 			"from_port": 0,
 			"to": "invert",
@@ -59,6 +53,24 @@
 			"from_port": 0,
 			"to": "Material",
 			"to_port": 4
+		},
+		{
+			"from": "tonality",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "uniform",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
 		}
 	],
 	"label": "Graph",
@@ -75,20 +87,20 @@
 			},
 			"name": "Material",
 			"node_position": {
-				"x": -88.000008,
-				"y": 2
+				"x": 58.999992,
+				"y": -16
 			},
 			"parameters": {
 				"albedo_color": {
 					"a": 1,
-					"b": 0,
-					"g": 0.382093,
-					"r": 0.045194,
+					"b": 1,
+					"g": 1,
+					"r": 1,
 					"type": "Color"
 				},
 				"ao": 1,
 				"depth_scale": 0.29,
-				"emission_energy": 1,
+				"emission_energy": 0,
 				"flags_transparent": true,
 				"metallic": 0,
 				"normal": 1,
@@ -564,8 +576,8 @@
 		{
 			"name": "clouds_noise",
 			"node_position": {
-				"x": -560.586121,
-				"y": -98.735489
+				"x": -674.586121,
+				"y": -99.735489
 			},
 			"parameters": {
 				"n_scale": 8,
@@ -578,7 +590,7 @@
 		{
 			"name": "tonality",
 			"node_position": {
-				"x": -318.477661,
+				"x": -449.477661,
 				"y": -98.959534
 			},
 			"parameters": {
@@ -644,6 +656,38 @@
 			},
 			"seed_int": 0,
 			"type": "rotate"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -254.971741,
+				"y": -154.533142
+			},
+			"parameters": {
+				"amount1": 1,
+				"blend_type1": 2
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "uniform",
+			"node_position": {
+				"x": -489.971741,
+				"y": -246.533142
+			},
+			"parameters": {
+				"color": {
+					"a": 1,
+					"b": 0,
+					"g": 0.53125,
+					"r": 0.053955,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
 		}
 	],
 	"parameters": {

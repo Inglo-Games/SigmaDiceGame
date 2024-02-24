@@ -1,12 +1,6 @@
 {
 	"connections": [
 		{
-			"from": "tonality",
-			"from_port": 0,
-			"to": "Material",
-			"to_port": 0
-		},
-		{
 			"from": "blend2",
 			"from_port": 0,
 			"to": "tonality",
@@ -23,37 +17,56 @@
 			"from_port": 0,
 			"to": "blend2",
 			"to_port": 0
+		},
+		{
+			"from": "uniform",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 1
+		},
+		{
+			"from": "tonality",
+			"from_port": 0,
+			"to": "blend2_2",
+			"to_port": 0
+		},
+		{
+			"from": "blend2_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
 		}
 	],
 	"label": "Graph",
 	"longdesc": "",
-	"name": "@@322",
+	"name": "322",
 	"node_position": {
 		"x": 0,
 		"y": 0
 	},
 	"nodes": [
 		{
+			"export_last_target": "Blender",
 			"export_paths": {
-
+				"Blender": "D:/DevProjects/SigmaDiceGame/blender_models/green_felt"
 			},
 			"name": "Material",
 			"node_position": {
-				"x": 0,
-				"y": 0
+				"x": 167,
+				"y": -128
 			},
 			"parameters": {
 				"albedo_color": {
 					"a": 1,
-					"b": 0,
-					"g": 0.804688,
-					"r": 0.042352,
+					"b": 1,
+					"g": 1,
+					"r": 1,
 					"type": "Color"
 				},
 				"ao": 1,
 				"depth_scale": 0.5,
 				"emission_energy": 1,
-				"flags_transparent": true,
+				"flags_transparent": false,
 				"metallic": 0,
 				"normal": 1,
 				"roughness": 1,
@@ -66,8 +79,8 @@
 		{
 			"name": "clouds_noise",
 			"node_position": {
-				"x": -756.720032,
-				"y": -89.799942
+				"x": -808.720032,
+				"y": -142.799942
 			},
 			"parameters": {
 				"n_scale": 6,
@@ -80,8 +93,8 @@
 		{
 			"name": "tonality",
 			"node_position": {
-				"x": -203.720032,
-				"y": -1.799942
+				"x": -325.720032,
+				"y": -55.799942
 			},
 			"parameters": {
 				"curve": {
@@ -108,8 +121,8 @@
 		{
 			"name": "directional_noise",
 			"node_position": {
-				"x": -754.280151,
-				"y": 34.062195
+				"x": -811.280151,
+				"y": -24.937805
 			},
 			"parameters": {
 				"n_scale": 4,
@@ -123,12 +136,44 @@
 			"generic_size": 1,
 			"name": "blend2",
 			"node_position": {
-				"x": -485.280151,
-				"y": -53.937805
+				"x": -596.280151,
+				"y": -69.937805
 			},
 			"parameters": {
 				"amount1": 0.33,
 				"blend_type1": 1
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "uniform",
+			"node_position": {
+				"x": -341.800049,
+				"y": -145.295105
+			},
+			"parameters": {
+				"color": {
+					"a": 1,
+					"b": 0,
+					"g": 0.803922,
+					"r": 0.043137,
+					"type": "Color"
+				}
+			},
+			"seed_int": 0,
+			"type": "uniform"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2_2",
+			"node_position": {
+				"x": -123.800049,
+				"y": -126.295105
+			},
+			"parameters": {
+				"amount1": 1,
+				"blend_type1": 2
 			},
 			"seed_int": 0,
 			"type": "blend2"
