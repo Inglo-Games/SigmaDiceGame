@@ -11,14 +11,14 @@ const CAM_START_POS = Transform3D(
 		Vector3(1, 0, 0),
 		Vector3(0, 0.866025, -0.5),
 		Vector3(0, 0.5, 0.866025),
-		Vector3(0, 6.5, 7)
+		Vector3(0, 12.7, 23.5)
 )
 # Transform for camera during dice selection phase
 const CAM_END_POS = Transform3D(
 		Vector3(1, 0, 0),
 		Vector3(0, 0, -1),
 		Vector3(0, 1, 0),
-		Vector3(0, 6.5, -7)
+		Vector3(0, 23, 2)
 )
 
 # Name for saved game file
@@ -60,7 +60,7 @@ func _ready():
 	game_state.connect("selection_error_two_pairs", _on_error_two_pairs)
 	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
 	game_state.connect("game_ended", _on_game_over)
-	
+
 
 func _input(_event):
 	
