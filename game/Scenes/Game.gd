@@ -136,7 +136,8 @@ func _on_pressed_end_round_button():
 		print("Current scores:\n%s\n%s\n" % [game_state.score_pair_count, game_state.discard_pile])
 		$ScoreboardPanel/PanelContainer/Scoreboard.update_scoreboard(game_state)
 		_reset_game_state()
-		_save_game_data()
+		if game_state:
+			_save_game_data()
 		round_ended.emit()
 	else:
 		print("Can't end round!\n")
@@ -185,8 +186,12 @@ func _on_game_over():
 	popup.set_score_label(final_score)
 	add_child(popup)
 	_record_player_final_score(final_score)
+	# Nullify game state to prevent saving state after deleting the file
+	game_state = null
 	# Remove save game file since game is finished
-	DirAccess.remove_absolute(SAVE_GAME_FILE)
+	var error : Error = DirAccess.remove_absolute(SAVE_GAME_FILE)
+	if error != Error.OK:
+		print("Error removing same game file: " + str(error))
 
 
 # Record the player's final score and date/time in a file
