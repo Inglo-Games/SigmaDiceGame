@@ -21,8 +21,8 @@ func _ready():
 	$Label.text = str(row_value)
 	
 	# Determine width of green LEDs, less common values like 2 and 12 are wider
-	var green_led_width = floor($Led2.size.x * (1 + 0.23 * abs(7 - row_value)))
-	$Led2.custom_minimum_size.x = green_led_width
+	var green_led_width = floor($Led3.size.x * (1 + 0.23 * abs(7 - row_value)))
+	$Led3.custom_minimum_size.x = green_led_width
 	
 	# Determine number of LEDs based on above width
 	var sep_const := get_theme_constant("separation")
@@ -33,26 +33,34 @@ func _ready():
 	# Duplicate $Led2 until there are num_lights of them
 	for index in range(num_lights - 1):
 		# Keep groups and scripts, not instance
-		add_child($Led2.duplicate(DUPLICATE_SCRIPTS | DUPLICATE_GROUPS))
+		add_child($Led3.duplicate(DUPLICATE_SCRIPTS | DUPLICATE_GROUPS))
 
 
 # Set light textures based on current number of points for this value
 func set_lights(points:int):
 	
-	# If points are 0-2, we only need to modify the red lights
+	# If points are 0-3, we only need to modify the red lights
 	if points == 0:
 		$Led0.set_texture(LED_RED_OFF)
 		$Led1.set_texture(LED_RED_OFF)
+		$Led2.set_texture(LED_RED_OFF)
 	
 	elif points == 1:
 		$Led0.set_texture(LED_RED_ON)
 		$Led1.set_texture(LED_RED_OFF)
+		$Led2.set_texture(LED_RED_OFF)
 	
 	elif points == 2:
 		$Led0.set_texture(LED_RED_ON)
 		$Led1.set_texture(LED_RED_ON)
+		$Led2.set_texture(LED_RED_OFF)
 	
-	# If points is more than 2, go through as many lights as there are points 
+	elif points == 3:
+		$Led0.set_texture(LED_RED_ON)
+		$Led1.set_texture(LED_RED_ON)
+		$Led2.set_texture(LED_RED_ON)
+	
+	# If points is more than 3, go through as many lights as there are points 
 	# and set them to green
 	else:
 		var counter = points

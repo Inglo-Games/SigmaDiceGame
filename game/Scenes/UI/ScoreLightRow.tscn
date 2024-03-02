@@ -38,3 +38,12 @@ patch_margin_left = 17
 patch_margin_top = 17
 patch_margin_right = 17
 patch_margin_bottom = 17
+
+[node name="Led3" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_b50ot")
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 17
+patch_margin_bottom = 17

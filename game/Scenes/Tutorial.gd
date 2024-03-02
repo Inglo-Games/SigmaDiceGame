@@ -9,7 +9,7 @@ const tutorial_lines := [
 	"Tap the “End round” button to end the round.",
 	"Tap the “^” button to see the scoreboard.",
 	"Each round, you get points for the sum of each color pair.  Less common pairs like 2 and 12 are worth more.",
-	"The first two points for each sum count against you.  The third and later points add to your score.",
+	"The first three points for each sum count against you.  The fourth and later points add to your score.",
 	"The uncolored die is added to the discard pile.  Once the discard pile has three values, you must discard one of those values if possible each round.",
 	"Once any of the discard values has been discarded 10 times, the game ends."
 ]

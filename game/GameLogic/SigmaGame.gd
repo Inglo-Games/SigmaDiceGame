@@ -101,14 +101,14 @@ func calculate_total_score() -> int :
 	
 	var ret_val := 0
 	for index in range(len(score_pair_count)):
-		if score_pair_count[index] <= 2:
-			# If pair has only one or two, it gets a negative value
+		if score_pair_count[index] <= 3:
+			# If pair has three or less, it gets a negative value
 			ret_val += score_pair_count[index] * NEGATIVE_SCORE_VALUE
 		else:
-			# If pair has more than two, it's value scales based on pair's
+			# If pair has more than three, it's value scales based on pair's
 			# relative frequency (7 is most common, so it's worth the least)
 			var score_amount : int = POSITIVE_SCORE_VALUE + SCORE_SCALING_BONUS * abs(7 - index)
-			ret_val += (score_pair_count[index] - 2) * score_amount
+			ret_val += (score_pair_count[index] - 3) * score_amount
 	
 	return ret_val
 
