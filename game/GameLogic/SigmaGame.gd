@@ -25,6 +25,8 @@ signal game_ended
 # The current state of the random number generator; ensures randomness is
 # consistent so players can't save-scum
 @export var rng_state : int = RngManager.get_rng_state()
+# Note if the game has ended to ensure we don't save an already-finished game
+var is_game_finished : bool = false
 
 
 func _init():
