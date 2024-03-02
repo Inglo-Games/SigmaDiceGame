@@ -25,23 +25,24 @@ script = ExtResource("1_fgpix")
 environment = SubResource("Environment_ajpux")
 
 [node name="Die" parent="." groups=["dice"] instance=ExtResource("2_iwf6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 2.6, 4.5)
 
 [node name="Die2" parent="." groups=["dice"] instance=ExtResource("2_iwf6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2.6, 4.5)
 
 [node name="Die3" parent="." groups=["dice"] instance=ExtResource("2_iwf6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 4.5)
 
 [node name="Die4" parent="." groups=["dice"] instance=ExtResource("2_iwf6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2.6, 4.5)
 
 [node name="Die5" parent="." groups=["dice"] instance=ExtResource("2_iwf6n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1, -1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 2.6, 4.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6.5, 7)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 12.7, 23.5)
 current = true
+fov = 37.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.583143, -0.707107, -0.39993, 0.565586, -1.91925e-08, 0.824689, -0.583143, -0.707107, 0.39993, -2, 7, 5)
@@ -77,7 +78,6 @@ offset_bottom = 1801.0
 grow_vertical = 0
 
 [node name="dice_box_street" parent="." instance=ExtResource("5_silwh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25583, -5.24854)
 
 [connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
