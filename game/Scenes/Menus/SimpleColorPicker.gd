@@ -1,6 +1,9 @@
 extends Control
 class_name SimpleColorPicker
 
+
+signal color_selected
+
 # Set the setting name that this popup would change the color of
 var color_setting : String = ""
 
@@ -36,6 +39,7 @@ func _on_slider_value_changed(_value):
 # Triggered by "Accept" button, record the color to the ProjectSettings
 func _on_ok_button_pressed():
 	ProjectSettings.set_setting(color_setting, _get_color_from_sliders())
+	color_selected.emit()
 	self.queue_free()
 
 

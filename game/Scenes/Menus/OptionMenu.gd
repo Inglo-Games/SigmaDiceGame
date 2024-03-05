@@ -1,6 +1,7 @@
 extends Control
 
 
+# Names of settings that store colors for player to choose dice with
 const COLOR_A_SETTING = "user_settings/colors/dice_color_a"
 const COLOR_B_SETTING = "user_settings/colors/dice_color_b"
 
@@ -9,8 +10,8 @@ func _ready():
 	# Set widgets to reflect current values
 	$GridContainer/SfxSlider.value = ProjectSettings.get_setting(AudioManager.SFX_SETTING)
 	$GridContainer/BgmSlider.value = ProjectSettings.get_setting(AudioManager.BGM_SETTING)
-	$GridContainer/ColorPickerA.color = ProjectSettings.get_setting(COLOR_A_SETTING)
-	$GridContainer/ColorPickerB.color = ProjectSettings.get_setting(COLOR_B_SETTING)
+	# Set textures for color picker buttons
+	_on_new_color_selected()
 
 
 # Handle "Back" action in Android OS
@@ -37,13 +38,42 @@ func _on_bgm_slider_value_changed(value:float):
 	AudioManager.set_audio_busses()
 
 
-# Triggered by ColorPicker1 value being changed; updates first color setting
-func _on_color_picker_1_color_changed(color:Color):
-	$ButtonClickAudio.play()
-	ProjectSettings.set_setting(COLOR_A_SETTING, color)
+# Triggered by clicking the TextureButton for color A; creates a 
+# SimpleColorPicker popup and connects it to the color update function
+func _on_texture_button_a_pressed():
+	var picker = ColorPickerFactory.create_picker(COLOR_A_SETTING)
+	picker.color_selected.connect(_on_new_color_selected)
+	add_child(picker)
 
 
-# Triggered by ColorPicker2 value being changed; updates second color setting
-func _on_color_picker_2_color_changed(color:Color):
-	$ButtonClickAudio.play()
-	ProjectSettings.set_setting(COLOR_B_SETTING, color)
+# Triggered by clicking the TextureButton for color B; creates a 
+# SimpleColorPicker popup and connects it to the color update function
+func _on_texture_button_b_pressed():
+	var picker = ColorPickerFactory.create_picker(COLOR_B_SETTING)
+	picker.color_selected.connect(_on_new_color_selected)
+	add_child(picker)
+
+
+# Triggered by player selecting a new color via SimpleColorPicker popup, update
+# the colors displayed on both color TextureButtons
+func _on_new_color_selected():
+	_set_texture_color(
+		$GridContainer/TextureButtonA, 
+		ProjectSettings.get_setting(COLOR_A_SETTING)
+	)
+	_set_texture_color(
+		$GridContainer/TextureButtonB, 
+		ProjectSettings.get_setting(COLOR_B_SETTING)
+	)
+
+
+# Helper function to set a GradientTexture2D to a single given color
+func _set_texture_color(button:TextureButton, color:Color):
+	# Create a new Gradient with just the given color
+	var new_gradient = Gradient.new()
+	new_gradient.set_color(0, color)
+	new_gradient.set_color(1, color)
+	# Set the texture's gradient to the new one
+	button.texture_normal.gradient = new_gradient
+	button.texture_pressed.gradient = new_gradient
+	button.texture_hover.gradient = new_gradient

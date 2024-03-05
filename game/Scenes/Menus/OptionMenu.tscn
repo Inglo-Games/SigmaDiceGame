@@ -1,8 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhne06yd0qj4y"]
+[gd_scene load_steps=12 format=3 uid="uid://dhne06yd0qj4y"]
 
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_bjqij"]
 [ext_resource type="Script" path="res://Scenes/Menus/OptionMenu.gd" id="1_ls51q"]
 [ext_resource type="AudioStream" uid="uid://cthykgub1p0wm" path="res://Assets/sfx/click.wav" id="3_y8rb0"]
+
+[sub_resource type="Gradient" id="Gradient_nqy55"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7nrbc"]
+gradient = SubResource("Gradient_nqy55")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7xo8i"]
+gradient = SubResource("Gradient_nqy55")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_laddg"]
+gradient = SubResource("Gradient_nqy55")
+
+[sub_resource type="Gradient" id="Gradient_sq8m7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73ich"]
+gradient = SubResource("Gradient_sq8m7")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d2nfs"]
+gradient = SubResource("Gradient_sq8m7")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7t5ae"]
+gradient = SubResource("Gradient_sq8m7")
 
 [node name="OptionMenu" type="Control"]
 layout_mode = 3
@@ -75,18 +97,24 @@ layout_mode = 2
 text = "Color 1"
 horizontal_alignment = 2
 
-[node name="ColorPickerA" type="ColorPickerButton" parent="GridContainer"]
+[node name="TextureButtonA" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
-text = "Color"
+texture_normal = SubResource("GradientTexture2D_7nrbc")
+texture_pressed = SubResource("GradientTexture2D_7xo8i")
+texture_hover = SubResource("GradientTexture2D_laddg")
+stretch_mode = 0
 
 [node name="ColorLabelB" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Color 2"
 horizontal_alignment = 2
 
-[node name="ColorPickerB" type="ColorPickerButton" parent="GridContainer"]
+[node name="TextureButtonB" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
-text = "Color"
+texture_normal = SubResource("GradientTexture2D_73ich")
+texture_pressed = SubResource("GradientTexture2D_d2nfs")
+texture_hover = SubResource("GradientTexture2D_7t5ae")
+stretch_mode = 0
 
 [node name="ButtonClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_y8rb0")
@@ -95,5 +123,5 @@ bus = &"sfx"
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="GridContainer/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="GridContainer/BgmSlider" to="." method="_on_bgm_slider_value_changed"]
-[connection signal="color_changed" from="GridContainer/ColorPickerA" to="." method="_on_color_picker_1_color_changed"]
-[connection signal="color_changed" from="GridContainer/ColorPickerB" to="." method="_on_color_picker_2_color_changed"]
+[connection signal="pressed" from="GridContainer/TextureButtonA" to="." method="_on_texture_button_a_pressed"]
+[connection signal="pressed" from="GridContainer/TextureButtonB" to="." method="_on_texture_button_b_pressed"]
