@@ -53,6 +53,9 @@ func _ready():
 	else:
 		game_state = SigmaGame.new()
 	
+	# Connect scoreboard sliding signal to function to move other buttons
+	$ScoreboardPanel.scoreboard_toggled.connect(_move_round_and_menu_buttons)
+	
 	# Connect signals from each die to relevant functions
 	for node in get_children():
 		if node is Die:
@@ -155,6 +158,27 @@ func _launch_dice():
 	# movement check fails
 	await get_tree().create_timer(5.0).timeout
 	$EndRoundButton.disabled = false
+
+
+# Triggered by scoreboard sliding signal; move other buttons with it
+func _move_round_and_menu_buttons(distance:int):
+	# Setup "Main Menu" button tween
+	var back_target = Vector2(
+			$BackButton.position.x,
+			$BackButton.position.y + distance)
+	var tween1 = get_tree().create_tween()
+	tween1.tween_property($BackButton, "position", back_target, 0.5)
+	tween1.set_trans(Tween.TRANS_BACK)
+	# Setup "End Round" button tween
+	var round_target = Vector2(
+			$EndRoundButton.position.x,
+			$EndRoundButton.position.y + distance)
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property($EndRoundButton, "position", round_target, 0.5)
+	tween2.set_trans(Tween.TRANS_BACK)
+	# Play both tweens
+	tween1.play()
+	tween2.play()
 
 
 # Reset the game dice, camera, and UI to start-of-round state

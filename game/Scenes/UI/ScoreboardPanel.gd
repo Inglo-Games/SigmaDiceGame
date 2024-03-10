@@ -3,7 +3,7 @@ extends VBoxContainer
 
 signal scoreboard_toggled
 
-# X coordinate for where panel should sit when "in view", relative to start pos
+# Coordinate for where panel should sit when "in view", relative to start pos
 const SLIDE_TARGET_X := 256.0
 const SLIDE_TARGET_Y := 1024.0
 
@@ -20,13 +20,13 @@ func _on_expander_button_pressed():
 	else:
 		_slide_panel_into_view()
 	$ExpanderButton.release_focus()
-	scoreboard_toggled.emit()
 
 
 # Slide the panel up into the player's viewport
 func _slide_panel_into_view():
 	# Determine new position for panel
 	var target_pos = Vector2(position.x, position.y - SLIDE_TARGET_Y)
+	scoreboard_toggled.emit(-SLIDE_TARGET_Y)
 	
 	# Use a tween to slide panel
 	var tween = get_tree().create_tween()
@@ -44,6 +44,7 @@ func _slide_panel_into_view():
 # Slide the panel down out of the player's viewport
 func _slide_panel_out_view():
 	var target_pos = Vector2(position.x, position.y + SLIDE_TARGET_Y)
+	scoreboard_toggled.emit(SLIDE_TARGET_Y)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", target_pos, 0.5)

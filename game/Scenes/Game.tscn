@@ -48,10 +48,17 @@ fov = 37.8493
 transform = Transform3D(0.583143, -0.707107, -0.39993, 0.565586, -1.91925e-08, 0.824689, -0.583143, -0.707107, 0.39993, -2, 7, 5)
 
 [node name="EndRoundButton" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 368.0
-offset_bottom = 120.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -344.0
+offset_top = -208.0
+offset_right = -29.0
+offset_bottom = -112.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("4_2o0ol")
@@ -59,14 +66,14 @@ disabled = true
 text = "End Round"
 
 [node name="BackButton" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -382.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 120.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -208.0
+offset_right = 339.0
+offset_bottom = -112.0
+grow_vertical = 0
 theme = ExtResource("4_2o0ol")
 text = "Main Menu"
 
