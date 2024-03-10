@@ -4,12 +4,15 @@ extends Control
 # Names of settings that store colors for player to choose dice with
 const COLOR_A_SETTING = "user_settings/colors/dice_color_a"
 const COLOR_B_SETTING = "user_settings/colors/dice_color_b"
+# Name of setting for left handed mode
+const LEFT_HAND_MODE_SETTING = "user_settings/ui/left_handed_mode"
 
 
 func _ready():
 	# Set widgets to reflect current values
 	$GridContainer/SfxSlider.value = ProjectSettings.get_setting(AudioManager.SFX_SETTING)
 	$GridContainer/BgmSlider.value = ProjectSettings.get_setting(AudioManager.BGM_SETTING)
+	$GridContainer/LeftySwitch.button_pressed = ProjectSettings.get_setting(LEFT_HAND_MODE_SETTING)
 	# Set textures for color picker buttons
 	_on_new_color_selected()
 
@@ -36,6 +39,11 @@ func _on_sfx_slider_value_changed(value:float):
 func _on_bgm_slider_value_changed(value:float):
 	ProjectSettings.set_setting(AudioManager.BGM_SETTING, value)
 	AudioManager.set_audio_busses()
+
+
+# Trigger by left-handed switch toggle; sets left-handed mode setting
+func _on_lefty_switch_toggled(toggled_on:bool):
+	ProjectSettings.set_setting(LEFT_HAND_MODE_SETTING, toggled_on)
 
 
 # Triggered by clicking the TextureButton for color A; creates a 
@@ -77,3 +85,4 @@ func _set_texture_color(button:TextureButton, color:Color):
 	button.texture_normal.gradient = new_gradient
 	button.texture_pressed.gradient = new_gradient
 	button.texture_hover.gradient = new_gradient
+

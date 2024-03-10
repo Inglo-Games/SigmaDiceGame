@@ -38,10 +38,10 @@ script = ExtResource("1_ls51q")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 24.0
+offset_left = 909.0
 offset_top = 24.0
-offset_right = 69.0
-offset_bottom = 55.0
+offset_right = 1059.0
+offset_bottom = 120.0
 text = "Back
 "
 
@@ -92,6 +92,16 @@ step = 0.1
 tick_count = 6
 ticks_on_borders = true
 
+[node name="LeftyLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Left-Handed"
+horizontal_alignment = 2
+
+[node name="LeftySwitch" type="CheckButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+
 [node name="ColorLabelA" type="Label" parent="GridContainer"]
 layout_mode = 2
 text = "Color 1"
@@ -123,5 +133,6 @@ bus = &"sfx"
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="value_changed" from="GridContainer/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="GridContainer/BgmSlider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="toggled" from="GridContainer/LeftySwitch" to="." method="_on_lefty_switch_toggled"]
 [connection signal="pressed" from="GridContainer/TextureButtonA" to="." method="_on_texture_button_a_pressed"]
 [connection signal="pressed" from="GridContainer/TextureButtonB" to="." method="_on_texture_button_b_pressed"]

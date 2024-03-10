@@ -63,6 +63,12 @@ func _ready():
 	game_state.connect("selection_error_two_pairs", _on_error_two_pairs)
 	game_state.connect("selection_error_bad_discard", _on_error_bad_discard)
 	game_state.connect("game_ended", _on_game_over)
+	
+	# If left-handed mode is active, switch the "End Round" and "Main Menu" buttons
+	if(ProjectSettings.get_setting("user_settings/ui/left_handed_mode")):
+		var left_pos = $BackButton.position
+		$BackButton.position = $EndRoundButton.position
+		$EndRoundButton.position = left_pos
 
 
 func _input(_event):
