@@ -2,14 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ggc5iur181t"
+uid="uid://bkfu1qt64qurt"
 path.s3tc="res://.godot/imported/dice_box_street_brick_wall_albedo.png-776667d2867219302f0033a978e94931.s3tc.ctex"
 path.etc2="res://.godot/imported/dice_box_street_brick_wall_albedo.png-776667d2867219302f0033a978e94931.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

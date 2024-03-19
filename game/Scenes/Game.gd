@@ -11,14 +11,14 @@ const CAM_START_POS = Transform3D(
 		Vector3(1, 0, 0),
 		Vector3(0, 0.866025, -0.5),
 		Vector3(0, 0.5, 0.866025),
-		Vector3(0, 12.7, 23.5)
+		Vector3(0, 6.7, 10.5)
 )
 # Transform for camera during dice selection phase
 const CAM_END_POS = Transform3D(
 		Vector3(1, 0, 0),
 		Vector3(0, 0, -1),
 		Vector3(0, 1, 0),
-		Vector3(0, 23, 2)
+		Vector3(0, 8.5, 0)
 )
 
 # Name for saved game file

@@ -2,14 +2,13 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp05kvnsxoqj7"
+uid="uid://dnkw4gg074dth"
 path.s3tc="res://.godot/imported/dice_box_street_road_rough.png-f06ee8beac660126557b0217140bb9bf.s3tc.ctex"
 path.etc2="res://.godot/imported/dice_box_street_road_rough.png-f06ee8beac660126557b0217140bb9bf.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
