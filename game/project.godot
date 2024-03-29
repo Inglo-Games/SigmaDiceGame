@@ -71,3 +71,4 @@ colors/dice_color_b=Color(0, 0, 1, 1)
 audio/sfx_level=100.0
 audio/bgm_level=100.0
 ui/left_handed_mode=false
+game/stage=&"street"

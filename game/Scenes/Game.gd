@@ -53,6 +53,16 @@ func _ready():
 	else:
 		game_state = SigmaGame.new()
 	
+	# Load the stage scene as a child of this one based on what the player
+	# selected earlier; their choice was stored in this hidden setting
+	var stage_scene : Node3D
+	match ProjectSettings.get_setting("user_settings/game/stage"):
+		"street":
+			stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
+		_:
+			stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
+	add_child(stage_scene)
+	
 	# Connect scoreboard sliding signal to function to move other buttons
 	$ScoreboardPanel.scoreboard_toggled.connect(_move_round_and_menu_buttons)
 	

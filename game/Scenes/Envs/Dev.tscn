@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://hwdn4gwlkb3f"]
+
+[ext_resource type="PackedScene" uid="uid://54ft880qyhnx" path="res://Meshes/dice_box.glb" id="1_fn3jd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dice_box" parent="." instance=ExtResource("1_fn3jd")]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dno1j08arsktj"]
+
+[ext_resource type="PackedScene" uid="uid://dmd3c5cgwjpyn" path="res://Meshes/dice_box_street.glb" id="1_v15uf"]
+
+[sub_resource type="Environment" id="Environment_cumos"]
+background_energy_multiplier = 1.27
+reflected_light_source = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dice_box_street" parent="." instance=ExtResource("1_v15uf")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cumos")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.578365, 0.318187, 0.751167, -0.814802, 0.180273, 0.550999, 0.039906, -0.93073, 0.363523, 6.08238, 8.76444, -0.42423)
+light_energy = 0.458
