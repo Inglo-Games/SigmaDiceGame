@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Menus/MainMenu.gd" id="1_0s8gd"]
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_lujfo"]
 [ext_resource type="Texture2D" uid="uid://7rv2ua6jjkio" path="res://Assets/images/menu_bg.svg" id="3_840pb"]
-[ext_resource type="AudioStream" uid="uid://cthykgub1p0wm" path="res://Assets/sfx/click.wav" id="3_vfygy"]
 [ext_resource type="FontFile" uid="uid://cx7sr0raqrdbv" path="res://Assets/fonts/SourceSans3-SemiBold.ttf" id="4_2nkda"]
+[ext_resource type="AudioStream" uid="uid://ba3n5s5vygji2" path="res://Assets/sfx/DieOnStone03.wav" id="5_dyit7"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -73,7 +73,7 @@ layout_mode = 2
 text = "Exit"
 
 [node name="ButtonClickAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_vfygy")
+stream = ExtResource("5_dyit7")
 bus = &"sfx"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

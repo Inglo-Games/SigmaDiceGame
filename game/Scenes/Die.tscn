@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnuyb0p8l4syw"]
+[gd_scene load_steps=6 format=3 uid="uid://bnuyb0p8l4syw"]
 
 [ext_resource type="Script" path="res://Scenes/Die.gd" id="1_7np7b"]
 [ext_resource type="PackedScene" uid="uid://dwykr8euvxcab" path="res://Meshes/basic_die.glb" id="2_m3mmb"]
+[ext_resource type="AudioStream" uid="uid://cthykgub1p0wm" path="res://Assets/sfx/click.wav" id="3_8jc74"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2ss1"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -69,4 +70,11 @@ input_ray_pickable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_amd6i")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_8jc74")
+pitch_scale = 0.65
+max_polyphony = 3
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

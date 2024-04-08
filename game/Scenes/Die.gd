@@ -12,6 +12,7 @@ signal finished_moving
 @onready var GLOW_B : Color = ProjectSettings.get_setting("user_settings/colors/dice_color_b")
 
 @onready var face_cast : RayCast3D = $FaceDetectorRaycast
+@onready var audio_player : AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @onready var original_pos := global_position
 @onready var glow_color := GLOW_NONE
@@ -22,6 +23,16 @@ var pip_material
 # Record whether die is currently moving
 var is_moving := false
 
+# Three audio tracks for collisions with die, floor, and wall respectively
+var die_sounds : Array[AudioStream] = [
+	preload("res://Assets/sfx/DieOnDie01.wav"),
+	preload("res://Assets/sfx/DieOnDie02.wav"),
+	preload("res://Assets/sfx/DieOnDie03.wav")]
+var floor_sounds : Array[AudioStream] = [
+	preload("res://Assets/sfx/DieOnStone01.wav"),
+	preload("res://Assets/sfx/DieOnStone02.wav"),
+	preload("res://Assets/sfx/DieOnStone03.wav")
+]
 
 func _ready():
 	# Override material 1 (the pip material) so that changing colors will only
@@ -29,6 +40,10 @@ func _ready():
 	$basic_die/die.set_surface_override_material(1, \
 				$basic_die/die.get_mesh().surface_get_material(1).duplicate())
 	pip_material = $basic_die/die.get_surface_override_material(1)
+	
+	# Enable collision detection with up to 5 contact points
+	contact_monitor = true
+	max_contacts_reported = 5
 
 
 func _physics_process(_delta):
@@ -68,6 +83,7 @@ func get_color() -> Color :
 	return glow_color
 
 
+# Triggered by player input; change color if player taps/clicks on die
 func _on_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action("select_die") and event.is_pressed():
 		_change_glow_color()
@@ -122,3 +138,18 @@ func _launch_die():
 	# Delay setting is_moving so it doesn't trigger on the next frame
 	await get_tree().create_timer(0.02).timeout
 	is_moving = true
+
+
+# Triggered by collision with another object; play appropriate sound
+func _on_body_entered(body):
+	
+	# Case 1: Body is another die
+	if body is Die:
+		audio_player.set_stream(die_sounds.pick_random())
+		audio_player.play()
+	
+	# Case 2: Body is dice box
+	else:
+		# TODO: Differentiate between hitting floor and wall
+		audio_player.set_stream(floor_sounds.pick_random())
+		audio_player.play()
