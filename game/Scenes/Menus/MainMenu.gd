@@ -20,9 +20,9 @@ func _on_play_button_pressed():
 	# If there's a save game file, ask player to continue...
 	if FileAccess.file_exists("user://game_data.res"):
 		add_child(load("res://Scenes/UI/ContinuePrompt.tscn").instantiate())
-	# Otherwise just start the game
+	# Otherwise let player select level
 	else:
-		get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+		add_child(load("res://Scenes/UI/LevelSelectPrompt.tscn").instantiate())
 
 
 # Triggered by "Play Tutorial" button
