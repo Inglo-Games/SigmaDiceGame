@@ -57,8 +57,10 @@ func _ready():
 	# selected earlier; their choice was stored in this hidden setting
 	var stage_scene : Node3D
 	match ProjectSettings.get_setting("user_settings/game/stage"):
-		"street":
+		"Street":
 			stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
+		"Temple":
+			stage_scene = load("res://Scenes/Envs/Temple.tscn").instantiate()
 		_:
 			stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
 	add_child(stage_scene)

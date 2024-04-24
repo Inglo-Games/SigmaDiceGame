@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://y44a7qqdj8vg"]
+
+[ext_resource type="PackedScene" uid="uid://b83815v7pxg7w" path="res://Meshes/dice_box_temple.glb" id="1_3ahg8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_582n5"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_v3bsl"]
+sky_material = SubResource("ProceduralSkyMaterial_582n5")
+
+[sub_resource type="Environment" id="Environment_ve1r6"]
+background_mode = 2
+sky = SubResource("Sky_v3bsl")
+ambient_light_source = 3
+reflected_light_source = 2
+ssao_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.163073, 0.174092, 0.191406, 1)
+fog_light_energy = 0.72
+fog_density = 0.203
+fog_height = -1.3
+fog_height_density = 9.8246
+
+[node name="Temple" type="Node3D"]
+
+[node name="dice_box_temple" parent="." instance=ExtResource("1_3ahg8")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ve1r6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76571, 1.16704, -2.83927)
+light_color = Color(1, 0.650629, 0.30715, 1)
+light_energy = 1.542
+shadow_enabled = true
+omni_range = 4.088
+omni_attenuation = 0.225313
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47661, 1.16629, -2.86444)
+light_color = Color(1, 0.650629, 0.30715, 1)
+light_energy = 1.542
+shadow_enabled = true
+omni_range = 4.088
+omni_attenuation = 0.225313
