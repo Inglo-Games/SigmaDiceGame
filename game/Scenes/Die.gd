@@ -18,7 +18,7 @@ signal finished_moving
 @onready var glow_color := GLOW_NONE
 
 # Material used for the die pips
-var pip_material
+var pip_material : StandardMaterial3D
 
 # Record whether die is currently moving
 var is_moving := false
@@ -100,6 +100,8 @@ func _change_glow_color():
 		GLOW_NONE:
 			glow_color = GLOW_A
 	pip_material.albedo_color = glow_color
+	pip_material.emission = glow_color
+	pip_material.emission_enabled = true
 
 
 # Reset die to original positions and clear outline glow
@@ -111,6 +113,7 @@ func _reset_die():
 	is_moving = false
 	glow_color = GLOW_NONE
 	pip_material.albedo_color = glow_color
+	pip_material.emission_enabled = false
 	emit_signal("color_selection_changed")
 
 
