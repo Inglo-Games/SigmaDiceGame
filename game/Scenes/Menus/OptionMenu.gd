@@ -1,5 +1,7 @@
 extends Control
 
+# Signal to switch back to main menu
+signal menu_dismissed
 
 # Names of settings that store colors for player to choose dice with
 const COLOR_A_SETTING = "user_settings/colors/dice_color_a"
@@ -10,9 +12,9 @@ const LEFT_HAND_MODE_SETTING = "user_settings/ui/left_handed_mode"
 
 func _ready():
 	# Set widgets to reflect current values
-	$GridContainer/SfxSlider.value = ProjectSettings.get_setting(AudioManager.SFX_SETTING)
-	$GridContainer/BgmSlider.value = ProjectSettings.get_setting(AudioManager.BGM_SETTING)
-	$GridContainer/LeftySwitch.button_pressed = ProjectSettings.get_setting(LEFT_HAND_MODE_SETTING)
+	$PanelContainer/GridContainer/SfxSlider.value = ProjectSettings.get_setting(AudioManager.SFX_SETTING)
+	$PanelContainer/GridContainer/BgmSlider.value = ProjectSettings.get_setting(AudioManager.BGM_SETTING)
+	$PanelContainer/GridContainer/LeftySwitch.button_pressed = ProjectSettings.get_setting(LEFT_HAND_MODE_SETTING)
 	# Set textures for color picker buttons
 	_on_new_color_selected()
 
@@ -26,7 +28,9 @@ func _notification(what):
 # Triggered by "Back" button; change scene to main menu
 func _on_back_button_pressed():
 	$ButtonClickAudio.play()
-	get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
+	emit_signal("menu_dismissed")
+	self.visible = false
+	self.queue_free()
 
 
 # Triggered by SfxSlider value being changed; updates SFX level setting
@@ -66,11 +70,11 @@ func _on_texture_button_b_pressed():
 # the colors displayed on both color TextureButtons
 func _on_new_color_selected():
 	_set_texture_color(
-		$GridContainer/TextureButtonA, 
+		$PanelContainer/GridContainer/TextureButtonA, 
 		ProjectSettings.get_setting(COLOR_A_SETTING)
 	)
 	_set_texture_color(
-		$GridContainer/TextureButtonB, 
+		$PanelContainer/GridContainer/TextureButtonB, 
 		ProjectSettings.get_setting(COLOR_B_SETTING)
 	)
 

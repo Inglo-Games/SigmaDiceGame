@@ -37,35 +37,42 @@ theme = ExtResource("1_bjqij")
 script = ExtResource("1_ls51q")
 
 [node name="BackButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 909.0
-offset_top = 24.0
-offset_right = 1059.0
-offset_bottom = 120.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 126.0
+grow_horizontal = 0
 text = "Back
 "
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -114.5
-offset_top = -25.0
-offset_right = 114.5
-offset_bottom = 25.0
+offset_left = -189.0
+offset_top = -205.0
+offset_right = 189.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
 columns = 2
 
-[node name="SfxLabel" type="Label" parent="GridContainer"]
+[node name="SfxLabel" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 text = "Sound Effects"
 horizontal_alignment = 2
 
-[node name="SfxSlider" type="HSlider" parent="GridContainer"]
+[node name="SfxSlider" type="HSlider" parent="PanelContainer/GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -76,12 +83,12 @@ step = 0.1
 tick_count = 6
 ticks_on_borders = true
 
-[node name="BgmLabel" type="Label" parent="GridContainer"]
+[node name="BgmLabel" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 2
 
-[node name="BgmSlider" type="HSlider" parent="GridContainer"]
+[node name="BgmSlider" type="HSlider" parent="PanelContainer/GridContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -92,34 +99,34 @@ step = 0.1
 tick_count = 6
 ticks_on_borders = true
 
-[node name="LeftyLabel" type="Label" parent="GridContainer"]
+[node name="LeftyLabel" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 text = "Left-Handed"
 horizontal_alignment = 2
 
-[node name="LeftySwitch" type="CheckButton" parent="GridContainer"]
+[node name="LeftySwitch" type="CheckButton" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 flat = true
 
-[node name="ColorLabelA" type="Label" parent="GridContainer"]
+[node name="ColorLabelA" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 text = "Color 1"
 horizontal_alignment = 2
 
-[node name="TextureButtonA" type="TextureButton" parent="GridContainer"]
+[node name="TextureButtonA" type="TextureButton" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_7nrbc")
 texture_pressed = SubResource("GradientTexture2D_7xo8i")
 texture_hover = SubResource("GradientTexture2D_laddg")
 stretch_mode = 0
 
-[node name="ColorLabelB" type="Label" parent="GridContainer"]
+[node name="ColorLabelB" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 text = "Color 2"
 horizontal_alignment = 2
 
-[node name="TextureButtonB" type="TextureButton" parent="GridContainer"]
+[node name="TextureButtonB" type="TextureButton" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_73ich")
 texture_pressed = SubResource("GradientTexture2D_d2nfs")
@@ -131,8 +138,8 @@ stream = ExtResource("3_y8rb0")
 bus = &"sfx"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="value_changed" from="GridContainer/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="value_changed" from="GridContainer/BgmSlider" to="." method="_on_bgm_slider_value_changed"]
-[connection signal="toggled" from="GridContainer/LeftySwitch" to="." method="_on_lefty_switch_toggled"]
-[connection signal="pressed" from="GridContainer/TextureButtonA" to="." method="_on_texture_button_a_pressed"]
-[connection signal="pressed" from="GridContainer/TextureButtonB" to="." method="_on_texture_button_b_pressed"]
+[connection signal="value_changed" from="PanelContainer/GridContainer/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/GridContainer/BgmSlider" to="." method="_on_bgm_slider_value_changed"]
+[connection signal="toggled" from="PanelContainer/GridContainer/LeftySwitch" to="." method="_on_lefty_switch_toggled"]
+[connection signal="pressed" from="PanelContainer/GridContainer/TextureButtonA" to="." method="_on_texture_button_a_pressed"]
+[connection signal="pressed" from="PanelContainer/GridContainer/TextureButtonB" to="." method="_on_texture_button_b_pressed"]

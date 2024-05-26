@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Sigma Dice"
+config/version="0.10"
 run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
@@ -34,6 +35,10 @@ window/size/mode=3
 window/energy_saving/keep_screen_on=false
 window/stretch/aspect="keep_height"
 window/handheld/orientation=1
+
+[global]
+
+blender3_path=""
 
 [input]
 

@@ -14,6 +14,11 @@ func _notification(what):
 		get_tree().quit()
 
 
+# Triggered by signal "menu_dismissed"
+func _on_menu_reappear():
+	$VBoxContainer.visible = true
+
+
 # Triggered by "Play Game" button; goes to game scene
 func _on_play_button_pressed():
 	$ButtonClickAudio.play()
@@ -31,10 +36,13 @@ func _on_tutorial_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Tutorial.tscn")
 
 
-# Triggered by "Options" button; goes to options menu scene
+# Triggered by "Options" button; replaced main menu with options menu
 func _on_options_button_pressed():
 	$ButtonClickAudio.play()
-	get_tree().change_scene_to_file("res://Scenes/Menus/OptionMenu.tscn")
+	$VBoxContainer.visible = false
+	var options_menu = load("res://Scenes/Menus/OptionMenu.tscn").instantiate()
+	options_menu.menu_dismissed.connect(_on_menu_reappear)
+	add_child(options_menu)
 
 
 # Triggered by "Exit" button; quits program
