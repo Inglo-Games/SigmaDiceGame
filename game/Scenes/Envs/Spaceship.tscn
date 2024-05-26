@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0pfh5nbm4lkh"]
+
+[ext_resource type="PackedScene" uid="uid://s5cfh6p0mhkq" path="res://Meshes/dice_box_spaceship.glb" id="1_s4woe"]
+
+[sub_resource type="Environment" id="Environment_cimuv"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.33
+ssr_enabled = true
+ssr_max_steps = 32
+ssao_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dice_box_spaceship" parent="." instance=ExtResource("1_s4woe")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cimuv")

@@ -1,0 +1,105 @@
+{
+	"connections": [
+		{
+			"from": "bricks3",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "bricks3",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 3
+		},
+		{
+			"from": "bricks3",
+			"from_port": 0,
+			"to": "invert",
+			"to_port": 0
+		},
+		{
+			"from": "invert",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 6
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@322",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 188.64003,
+				"y": -61.716675
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.02,
+				"emission_energy": 0.33,
+				"flags_transparent": false,
+				"metallic": 1,
+				"normal": 1,
+				"roughness": 0.2,
+				"size": 11,
+				"sss": 0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "bricks3",
+			"node_position": {
+				"x": -239.40802,
+				"y": 16.998737
+			},
+			"parameters": {
+				"bevel": 0.01,
+				"columns": 1,
+				"corner": 0.05,
+				"mortar": 0.03,
+				"pattern": 0,
+				"repeat": 1,
+				"round": 0.08,
+				"row_offset": 0,
+				"rows": 1
+			},
+			"seed_int": 0,
+			"type": "bricks3"
+		},
+		{
+			"name": "invert",
+			"node_position": {
+				"x": 44.116089,
+				"y": 94.783325
+			},
+			"parameters": {
+
+			},
+			"seed_int": 0,
+			"type": "invert"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}
