@@ -61,6 +61,8 @@ func _ready():
 			stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
 		"Temple":
 			stage_scene = load("res://Scenes/Envs/Temple.tscn").instantiate()
+		"Spaceship":
+			stage_scene = load("res://Scenes/Envs/Spaceship.tscn").instantiate()
 		_:
 			stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
 	add_child(stage_scene)

@@ -30,7 +30,7 @@ fog_height_density = 9.8246
 environment = SubResource("Environment_ve1r6")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76571, 1.16704, -2.83927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74511, 0.322935, -2.98555)
 light_color = Color(1, 0.650629, 0.30715, 1)
 light_energy = 1.542
 shadow_enabled = true
@@ -38,7 +38,23 @@ omni_range = 4.088
 omni_attenuation = 0.225313
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47661, 1.16629, -2.86444)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86189, 0.213344, -3.06837)
+light_color = Color(1, 0.650629, 0.30715, 1)
+light_energy = 1.542
+shadow_enabled = true
+omni_range = 4.088
+omni_attenuation = 0.225313
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81562, 1.29458, -0.021876)
+light_color = Color(1, 0.650629, 0.30715, 1)
+light_energy = 1.542
+shadow_enabled = true
+omni_range = 4.088
+omni_attenuation = 0.225313
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84918, 1.32266, -0.0750485)
 light_color = Color(1, 0.650629, 0.30715, 1)
 light_energy = 1.542
 shadow_enabled = true
