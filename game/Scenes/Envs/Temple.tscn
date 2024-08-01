@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://y44a7qqdj8vg"]
+[gd_scene load_steps=6 format=3 uid="uid://y44a7qqdj8vg"]
 
 [ext_resource type="PackedScene" uid="uid://b83815v7pxg7w" path="res://Meshes/dice_box_temple.glb" id="1_3ahg8"]
+[ext_resource type="Script" path="res://Scenes/Envs/FlickeringLight.gd" id="3_8q5is"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_582n5"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -12,7 +13,8 @@ sky_material = SubResource("ProceduralSkyMaterial_582n5")
 [sub_resource type="Environment" id="Environment_ve1r6"]
 background_mode = 2
 sky = SubResource("Sky_v3bsl")
-ambient_light_source = 3
+ambient_light_source = 2
+ambient_light_energy = 3.0
 reflected_light_source = 2
 ssao_enabled = true
 fog_enabled = true
@@ -30,33 +32,40 @@ fog_height_density = 9.8246
 environment = SubResource("Environment_ve1r6")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74511, 0.322935, -2.98555)
-light_color = Color(1, 0.650629, 0.30715, 1)
-light_energy = 1.542
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.25, -3.1)
+light_energy = 1.4
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
+omni_shadow_mode = 0
+script = ExtResource("3_8q5is")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86189, 0.213344, -3.06837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.25, -3.1)
 light_color = Color(1, 0.650629, 0.30715, 1)
 light_energy = 1.542
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81562, 1.29458, -0.021876)
-light_color = Color(1, 0.650629, 0.30715, 1)
-light_energy = 1.542
-shadow_enabled = true
-omni_range = 4.088
-omni_attenuation = 0.225313
+omni_shadow_mode = 0
+script = ExtResource("3_8q5is")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84918, 1.32266, -0.0750485)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.25, -0.05)
 light_color = Color(1, 0.650629, 0.30715, 1)
 light_energy = 1.542
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
+omni_shadow_mode = 0
+script = ExtResource("3_8q5is")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.25, -0.05)
+light_color = Color(1, 0.650629, 0.30715, 1)
+light_energy = 1.542
+shadow_enabled = true
+omni_range = 4.088
+omni_attenuation = 0.225313
+omni_shadow_mode = 0
+script = ExtResource("3_8q5is")
