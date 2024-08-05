@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dno1j08arsktj"]
+[gd_scene load_steps=7 format=3 uid="uid://dno1j08arsktj"]
 
 [ext_resource type="PackedScene" uid="uid://dmd3c5cgwjpyn" path="res://Meshes/dice_box_street.glb" id="1_v15uf"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vbaks"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_seii4"]
+seamless = true
+noise = SubResource("FastNoiseLite_vbaks")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1j40"]
+sky_cover = SubResource("NoiseTexture2D_seii4")
+sky_cover_modulate = Color(0.566406, 0.566406, 0.566406, 1)
+
+[sub_resource type="Sky" id="Sky_kesx0"]
+sky_material = SubResource("ProceduralSkyMaterial_o1j40")
+
 [sub_resource type="Environment" id="Environment_cumos"]
-background_energy_multiplier = 1.27
+background_mode = 2
+background_energy_multiplier = 1.69
+sky = SubResource("Sky_kesx0")
+ambient_light_source = 3
 reflected_light_source = 1
 
 [node name="Node3D" type="Node3D"]
@@ -14,6 +30,8 @@ reflected_light_source = 1
 environment = SubResource("Environment_cumos")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.578365, 0.318187, 0.751167, -0.814802, 0.180273, 0.550999, 0.039906, -0.93073, 0.363523, 6.08238, 8.76444, -0.42423)
+transform = Transform3D(0.804406, 0.267466, 0.530465, -0.57523, 0.127525, 0.80799, 0.148462, -0.955091, 0.256437, 5.43527, 8.764, -0.424)
 light_energy = 0.4
+shadow_enabled = true
 directional_shadow_max_distance = 16.0
+directional_shadow_pancake_size = 0.0
