@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://da0s73fk55a5i"]
+
+[ext_resource type="PackedScene" uid="uid://dmd3c5cgwjpyn" path="res://Meshes/dice_box_street.glb" id="1_6hep5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vbaks"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_seii4"]
+seamless = true
+noise = SubResource("FastNoiseLite_vbaks")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1j40"]
+sky_top_color = Color(0.191406, 0.22571, 0.273438, 1)
+sky_horizon_color = Color(0.225815, 0.229134, 0.234375, 1)
+sky_cover = SubResource("NoiseTexture2D_seii4")
+sky_cover_modulate = Color(0.328125, 0.328125, 0.328125, 1)
+ground_bottom_color = Color(0.171875, 0.145234, 0.114297, 1)
+ground_horizon_color = Color(0.227451, 0.227451, 0.235294, 1)
+
+[sub_resource type="Sky" id="Sky_kesx0"]
+sky_material = SubResource("ProceduralSkyMaterial_o1j40")
+
+[sub_resource type="Environment" id="Environment_cumos"]
+background_mode = 2
+background_energy_multiplier = 0.76
+sky = SubResource("Sky_kesx0")
+ambient_light_source = 3
+reflected_light_source = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ch2fa"]
+emission_shape = 3
+emission_box_extents = Vector3(4, 0.1, 6)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 23.81
+initial_velocity_max = 23.81
+
+[sub_resource type="Curve" id="Curve_eatw4"]
+max_value = 0.1
+_data = [Vector2(0, 0.00769231), 0.0, 0.0, 0, 0, Vector2(0.0865385, 0.0296703), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0182857, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yep8e"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.823529, 0.960784, 1, 0.00784314)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_oq7jy"]
+material = SubResource("StandardMaterial3D_yep8e")
+sections = 2
+curve = SubResource("Curve_eatw4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_escmd"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_8amym"]
+inner_radius = 0.05
+outer_radius = 0.1
+rings = 8
+ring_segments = 8
+
+[node name="Node3D" type="Node3D"]
+
+[node name="dice_box_street" parent="." instance=ExtResource("1_6hep5")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cumos")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.804406, 0.267466, 0.530465, -0.57523, 0.127525, 0.80799, 0.148462, -0.955091, 0.256437, 5.43527, 8.764, -0.424)
+light_energy = 0.0
+light_bake_mode = 1
+directional_shadow_max_distance = 16.0
+directional_shadow_pancake_size = 0.0
+
+[node name="RainParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+amount = 512
+lifetime = 0.6
+preprocess = 3.0
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-4, -16, -6, 8, 16, 12)
+trail_enabled = true
+trail_lifetime = 0.05
+process_material = SubResource("ParticleProcessMaterial_ch2fa")
+draw_pass_1 = SubResource("RibbonTrailMesh_oq7jy")
+
+[node name="SplashParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-2.5, -2, -5, 5, 4, 10)
+process_material = SubResource("ParticleProcessMaterial_escmd")
+draw_pass_1 = SubResource("TorusMesh_8amym")
