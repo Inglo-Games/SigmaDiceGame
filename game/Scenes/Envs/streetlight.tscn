@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi4r4lqq8g16w"]
+
+[ext_resource type="PackedScene" uid="uid://dcw3w8joe7200" path="res://Meshes/streetlight.glb" id="1_c3vyy"]
+
+[node name="Streetlight" type="Node3D"]
+
+[node name="streetlight" parent="." instance=ExtResource("1_c3vyy")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.164204, 0.986426, 0, -0.986426, -0.164204, 0, 2.56786, 0.964439)
+light_color = Color(0.84375, 0.713636, 0.358906, 1)
+light_energy = 3.0
+spot_range = 30.0
+spot_attenuation = 0.0
+spot_angle = 18.74
+spot_angle_attenuation = 0.366021
