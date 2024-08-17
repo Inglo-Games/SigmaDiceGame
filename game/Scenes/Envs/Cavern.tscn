@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://y44a7qqdj8vg"]
 
-[ext_resource type="PackedScene" uid="uid://b83815v7pxg7w" path="res://Meshes/dice_box_temple.glb" id="1_3ahg8"]
-[ext_resource type="Script" path="res://Scenes/Envs/FlickeringLight.gd" id="3_8q5is"]
+[ext_resource type="PackedScene" uid="uid://b83815v7pxg7w" path="res://Meshes/dice_box_temple.glb" id="1_k4igw"]
+[ext_resource type="Script" path="res://Scenes/Envs/FlickeringLight.gd" id="2_3g3xc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_582n5"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -26,7 +26,7 @@ fog_height_density = 9.8246
 
 [node name="Temple" type="Node3D"]
 
-[node name="dice_box_temple" parent="." instance=ExtResource("1_3ahg8")]
+[node name="dice_box_temple" parent="." instance=ExtResource("1_k4igw")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ve1r6")
@@ -38,34 +38,28 @@ shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
 omni_shadow_mode = 0
-script = ExtResource("3_8q5is")
+script = ExtResource("2_3g3xc")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.25, -3.1)
-light_color = Color(1, 0.650629, 0.30715, 1)
-light_energy = 1.542
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
 omni_shadow_mode = 0
-script = ExtResource("3_8q5is")
+script = ExtResource("2_3g3xc")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.25, -0.05)
-light_color = Color(1, 0.650629, 0.30715, 1)
-light_energy = 1.542
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
 omni_shadow_mode = 0
-script = ExtResource("3_8q5is")
+script = ExtResource("2_3g3xc")
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.25, -0.05)
-light_color = Color(1, 0.650629, 0.30715, 1)
-light_energy = 1.542
 shadow_enabled = true
 omni_range = 4.088
 omni_attenuation = 0.225313
 omni_shadow_mode = 0
-script = ExtResource("3_8q5is")
+script = ExtResource("2_3g3xc")
