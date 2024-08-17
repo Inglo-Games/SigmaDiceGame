@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8f04gpvrk4ge"]
+
+[ext_resource type="PackedScene" uid="uid://26jnp0kq3yvl" path="res://Meshes/torch.glb" id="1_x1e0k"]
+[ext_resource type="AudioStream" uid="uid://dr8al0qx481rf" path="res://Assets/sfx/Fire.mp3" id="2_ulrce"]
+
+[sub_resource type="Gradient" id="Gradient_1qdwx"]
+offsets = PackedFloat32Array(0, 0.452703, 0.918919)
+colors = PackedColorArray(1, 0.97983, 0.301884, 1, 0.648438, 0.210142, 0.0433571, 1, 0, 0, 0, 0.690196)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8nkbg"]
+gradient = SubResource("Gradient_1qdwx")
+
+[sub_resource type="Curve" id="Curve_vj2w8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.551136, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rcig1"]
+curve = SubResource("Curve_vj2w8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sjvi6"]
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 0.14
+gravity = Vector3(0, 3, 0)
+color = Color(1, 0.97983, 0.301884, 1)
+color_ramp = SubResource("GradientTexture1D_8nkbg")
+emission_curve = SubResource("CurveTexture_rcig1")
+turbulence_noise_strength = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2esm"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PointMesh" id="PointMesh_cg57b"]
+material = SubResource("StandardMaterial3D_f2esm")
+
+[node name="Torch" type="Node3D"]
+
+[node name="torch" parent="." instance=ExtResource("1_x1e0k")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201657, 0.488835, 0)
+light_color = Color(1, 0.762874, 0.241543, 1)
+light_size = 0.4
+shadow_enabled = true
+omni_range = 12.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ulrce")
+autoplay = true
+bus = &"sfx"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173558, 0.484986, 0)
+amount = 8000
+lifetime = 0.51
+preprocess = 0.3
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_sjvi6")
+draw_pass_1 = SubResource("PointMesh_cg57b")

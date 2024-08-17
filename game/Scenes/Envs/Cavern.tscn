@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://y44a7qqdj8vg"]
 
 [ext_resource type="PackedScene" uid="uid://b83815v7pxg7w" path="res://Meshes/dice_box_temple.glb" id="1_k4igw"]
-[ext_resource type="Script" path="res://Scenes/Envs/FlickeringLight.gd" id="2_3g3xc"]
+[ext_resource type="PackedScene" uid="uid://b8f04gpvrk4ge" path="res://Scenes/Envs/Torch.tscn" id="2_5d6ph"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_582n5"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -31,35 +31,14 @@ fog_height_density = 9.8246
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ve1r6")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.25, -3.1)
-light_energy = 1.4
-shadow_enabled = true
-omni_range = 4.088
-omni_attenuation = 0.225313
-omni_shadow_mode = 0
-script = ExtResource("2_3g3xc")
+[node name="Torch" parent="." instance=ExtResource("2_5d6ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.855, 0.775, -2.956)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.25, -3.1)
-shadow_enabled = true
-omni_range = 4.088
-omni_attenuation = 0.225313
-omni_shadow_mode = 0
-script = ExtResource("2_3g3xc")
+[node name="Torch2" parent="." instance=ExtResource("2_5d6ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.855, 1.308, -0.765)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.25, -0.05)
-shadow_enabled = true
-omni_range = 4.088
-omni_attenuation = 0.225313
-omni_shadow_mode = 0
-script = ExtResource("2_3g3xc")
+[node name="Torch3" parent="." instance=ExtResource("2_5d6ph")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.85502, 0.775228, -2.95606)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.25, -0.05)
-shadow_enabled = true
-omni_range = 4.088
-omni_attenuation = 0.225313
-omni_shadow_mode = 0
-script = ExtResource("2_3g3xc")
+[node name="Torch4" parent="." instance=ExtResource("2_5d6ph")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.85502, 1.30755, -0.765385)
