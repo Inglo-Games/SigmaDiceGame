@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8f04gpvrk4ge"]
+[gd_scene load_steps=11 format=3 uid="uid://b8f04gpvrk4ge"]
 
+[ext_resource type="Script" path="res://Scenes/Envs/Torch.gd" id="1_8kcxq"]
 [ext_resource type="PackedScene" uid="uid://26jnp0kq3yvl" path="res://Meshes/torch.glb" id="1_x1e0k"]
 [ext_resource type="AudioStream" uid="uid://dr8al0qx481rf" path="res://Assets/sfx/Fire.mp3" id="2_ulrce"]
 
@@ -27,14 +28,15 @@ color_ramp = SubResource("GradientTexture1D_8nkbg")
 emission_curve = SubResource("CurveTexture_rcig1")
 turbulence_noise_strength = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2esm"]
-shading_mode = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m5c5"]
+transparency = 1
 vertex_color_use_as_albedo = true
 
 [sub_resource type="PointMesh" id="PointMesh_cg57b"]
-material = SubResource("StandardMaterial3D_f2esm")
+material = SubResource("StandardMaterial3D_3m5c5")
 
 [node name="Torch" type="Node3D"]
+script = ExtResource("1_8kcxq")
 
 [node name="torch" parent="." instance=ExtResource("1_x1e0k")]
 
@@ -52,7 +54,7 @@ bus = &"sfx"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173558, 0.484986, 0)
-amount = 8000
+amount = 2500
 lifetime = 0.51
 preprocess = 0.3
 randomness = 1.0
