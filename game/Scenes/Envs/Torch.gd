@@ -20,9 +20,6 @@ func _ready() -> void:
 	noise_img.noise = FastNoiseLite.new()
 	noise_img.noise.seed = randi()
 	noise_img.noise.frequency = 0.55
-	
-	# Make point size of flame material larger
-	$GPUParticles3D.draw_pass_1.material.set_point_size(2.0)
 
 func _process(delta: float) -> void:
 	counter += delta

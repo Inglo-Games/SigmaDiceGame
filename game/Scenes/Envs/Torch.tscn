@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8f04gpvrk4ge"]
+[gd_scene load_steps=13 format=3 uid="uid://b8f04gpvrk4ge"]
 
 [ext_resource type="Script" path="res://Scenes/Envs/Torch.gd" id="1_8kcxq"]
 [ext_resource type="PackedScene" uid="uid://26jnp0kq3yvl" path="res://Meshes/torch.glb" id="1_x1e0k"]
 [ext_resource type="AudioStream" uid="uid://dr8al0qx481rf" path="res://Assets/sfx/Fire.mp3" id="2_ulrce"]
 
 [sub_resource type="Gradient" id="Gradient_1qdwx"]
-offsets = PackedFloat32Array(0, 0.452703, 0.918919)
-colors = PackedColorArray(1, 0.97983, 0.301884, 1, 0.648438, 0.210142, 0.0433571, 1, 0, 0, 0, 0.690196)
+offsets = PackedFloat32Array(0, 0.540541, 1)
+colors = PackedColorArray(1, 0.685034, 0.206195, 1, 0.648438, 0.210142, 0.0433571, 1, 0, 0, 0, 0.690196)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8nkbg"]
 gradient = SubResource("Gradient_1qdwx")
@@ -18,22 +18,46 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_rcig1"]
 curve = SubResource("Curve_vj2w8")
 
+[sub_resource type="Curve" id="Curve_3t8sp"]
+_data = [Vector2(0, 1), 0.0, -8.85267e-08, 0, 0, Vector2(1, 0.230769), -2.33422, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6h0y3"]
+curve = SubResource("Curve_3t8sp")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sjvi6"]
-lifetime_randomness = 0.3
-emission_shape = 1
-emission_sphere_radius = 0.14
+lifetime_randomness = 0.7
+angle_min = 1.07288e-05
+angle_max = 45.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
 gravity = Vector3(0, 3, 0)
-color = Color(1, 0.97983, 0.301884, 1)
+linear_accel_min = 0.999998
+linear_accel_max = 3.0
+scale_min = 0.02
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_6h0y3")
+color = Color(1, 0.685034, 0.206195, 1)
 color_ramp = SubResource("GradientTexture1D_8nkbg")
 emission_curve = SubResource("CurveTexture_rcig1")
 turbulence_noise_strength = 0.3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3m5c5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwjwx"]
 transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.719274, 0.151741, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
-[sub_resource type="PointMesh" id="PointMesh_cg57b"]
-material = SubResource("StandardMaterial3D_3m5c5")
+[sub_resource type="QuadMesh" id="QuadMesh_ku4jf"]
+material = SubResource("StandardMaterial3D_qwjwx")
 
 [node name="Torch" type="Node3D"]
 script = ExtResource("1_8kcxq")
@@ -54,9 +78,9 @@ bus = &"sfx"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173558, 0.484986, 0)
-amount = 2500
-lifetime = 0.51
+amount = 200
+lifetime = 0.16
 preprocess = 0.3
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_sjvi6")
-draw_pass_1 = SubResource("PointMesh_cg57b")
+draw_pass_1 = SubResource("QuadMesh_ku4jf")
