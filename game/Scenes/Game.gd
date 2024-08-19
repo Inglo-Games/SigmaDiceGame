@@ -56,17 +56,20 @@ func _ready():
 	# Load the stage scene as a child of this one based on what the player
 	# selected earlier; their choice was stored in this hidden setting
 	var stage_scene : Node3D
-	match ProjectSettings.get_setting("user_settings/game/stage"):
-		"Street":
-			stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
-		"Rainy Street":
-			stage_scene = load("res://Scenes/Envs/StreetRain.tscn").instantiate()
-		"Cavern":
-			stage_scene = load("res://Scenes/Envs/Cavern.tscn").instantiate()
-		"Spaceship":
-			stage_scene = load("res://Scenes/Envs/Spaceship.tscn").instantiate()
-		_:
-			stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
+	if(self is GameTutorial):
+		stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
+	else:
+		match ProjectSettings.get_setting("user_settings/game/stage"):
+			"Street":
+				stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
+			"Rainy Street":
+				stage_scene = load("res://Scenes/Envs/StreetRain.tscn").instantiate()
+			"Cavern":
+				stage_scene = load("res://Scenes/Envs/Cavern.tscn").instantiate()
+			"Spaceship":
+				stage_scene = load("res://Scenes/Envs/Spaceship.tscn").instantiate()
+			_:
+				stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
 	add_child(stage_scene)
 	
 	# Connect scoreboard sliding signal to function to move other buttons
