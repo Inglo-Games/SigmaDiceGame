@@ -78,9 +78,10 @@ bus = &"sfx"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173558, 0.484986, 0)
-amount = 200
+amount = 50
 lifetime = 0.16
 preprocess = 0.3
 randomness = 1.0
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_sjvi6")
 draw_pass_1 = SubResource("QuadMesh_ku4jf")
