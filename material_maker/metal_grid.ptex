@@ -15,13 +15,19 @@
 		{
 			"from": "bricks3",
 			"from_port": 0,
+			"to": "colorize",
+			"to_port": 0
+		},
+		{
+			"from": "colorize",
+			"from_port": 0,
 			"to": "Material",
 			"to_port": 0
 		}
 	],
 	"label": "Graph",
 	"longdesc": "",
-	"name": "@@322",
+	"name": "322",
 	"node_position": {
 		"x": 0,
 		"y": 0
@@ -40,9 +46,9 @@
 			"parameters": {
 				"albedo_color": {
 					"a": 1,
-					"b": 0,
-					"g": 0,
-					"r": 0,
+					"b": 0.648438,
+					"g": 0.648438,
+					"r": 0.648438,
 					"type": "Color"
 				},
 				"ao": 1,
@@ -89,6 +95,37 @@
 			},
 			"seed_int": 0,
 			"type": "invert"
+		},
+		{
+			"name": "colorize",
+			"node_position": {
+				"x": 40.333313,
+				"y": 23.5
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.84375,
+							"g": 0.84375,
+							"pos": 0,
+							"r": 0.84375
+						},
+						{
+							"a": 1,
+							"b": 1,
+							"g": 1,
+							"pos": 1,
+							"r": 1
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
 		}
 	],
 	"parameters": {

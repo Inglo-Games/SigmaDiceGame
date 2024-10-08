@@ -1,35 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0pfh5nbm4lkh"]
+[gd_scene load_steps=9 format=3 uid="uid://d0pfh5nbm4lkh"]
 
 [ext_resource type="PackedScene" uid="uid://s5cfh6p0mhkq" path="res://Meshes/dice_box_spaceship.glb" id="1_s4woe"]
+[ext_resource type="Texture2D" uid="uid://01cr5t4qiaxm" path="res://Assets/images/disk.png" id="2_1lxyo"]
 
 [sub_resource type="Environment" id="Environment_cimuv"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.33
+ambient_light_energy = 0.3
 reflected_light_source = 1
 ssr_max_steps = 32
 
+[sub_resource type="Gradient" id="Gradient_8p5gk"]
+offsets = PackedFloat32Array(0.00675676, 0.283784, 1)
+colors = PackedColorArray(0.832031, 0, 0, 1, 1, 0.979561, 0.364829, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kteh3"]
+gradient = SubResource("Gradient_8p5gk")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7rfh"]
-emission_shape_offset = Vector3(0, -4, -10)
+emission_shape_offset = Vector3(0, -4, -5)
 emission_shape = 3
 emission_box_extents = Vector3(2, 2, 0.1)
 direction = Vector3(0, 0, 1)
 spread = 0.0
-initial_velocity_min = 1.0
-initial_velocity_max = 10.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
 scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_kteh3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02ysh"]
+transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-emission = Color(1, 0.990415, 0.642242, 1)
+albedo_texture = ExtResource("2_1lxyo")
 billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tqnon"]
 material = SubResource("StandardMaterial3D_02ysh")
-size = Vector2(0.02, 0.02)
+size = Vector2(0.05, 0.05)
 orientation = 2
 
 [node name="Node3D" type="Node3D"]
@@ -40,8 +51,9 @@ orientation = 2
 environment = SubResource("Environment_cimuv")
 
 [node name="Stars" type="GPUParticles3D" parent="."]
-amount = 30
+amount = 18
 lifetime = 6.0
+preprocess = 6.0
 randomness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_n7rfh")
