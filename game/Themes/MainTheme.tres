@@ -101,6 +101,6 @@ Label/font_sizes/font_size = 36
 OptionButton/font_sizes/font_size = 48
 OptionButton/fonts/font = ExtResource("1_4o71i")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_4heme")
-PopupMenu/font_sizes/font_size = 32
+PopupMenu/font_sizes/font_size = 46
 PopupMenu/fonts/font = ExtResource("1_4o71i")
 VBoxContainer/constants/separation = 18

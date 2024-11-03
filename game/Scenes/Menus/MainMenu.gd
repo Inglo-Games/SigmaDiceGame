@@ -1,6 +1,16 @@
 extends Control
 
 
+# Name for high score file
+const SCORES_FILE := "user://scores.csv"
+
+
+func _ready() -> void:
+	# Only show leaderboard button if there is stuff to show
+	if(FileAccess.file_exists(SCORES_FILE)):
+		$VBoxContainer/RecordButton.visible = true
+
+
 # Make background move each frame
 func _process(delta):
 	var bg = $ParallaxBackground/ParallaxLayer
@@ -43,6 +53,14 @@ func _on_options_button_pressed():
 	var options_menu = load("res://Scenes/Menus/OptionMenu.tscn").instantiate()
 	options_menu.menu_dismissed.connect(_on_menu_reappear)
 	add_child(options_menu)
+
+
+func _on_record_button_pressed():
+	$ButtonClickAudio.play()
+	$VBoxContainer.visible = false
+	var leaderboard = load("res://Scenes/Menus/Leaderboard.tscn").instantiate()
+	leaderboard.menu_dismissed.connect(_on_menu_reappear)
+	add_child(leaderboard)
 
 
 # Triggered by "Exit" button; quits program

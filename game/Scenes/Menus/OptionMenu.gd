@@ -22,13 +22,13 @@ func _ready():
 # Handle "Back" action in Android OS
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		get_tree().change_scene_to_file("res://Scenes/Menus/MainMenu.tscn")
+		_on_back_button_pressed()
 
 
-# Triggered by "Back" button; change scene to main menu
+# Triggered by "Back" button; display main menu
 func _on_back_button_pressed():
 	$ButtonClickAudio.play()
-	emit_signal("menu_dismissed")
+	menu_dismissed.emit()
 	self.visible = false
 	self.queue_free()
 
@@ -89,4 +89,3 @@ func _set_texture_color(button:TextureButton, color:Color):
 	button.texture_normal.gradient = new_gradient
 	button.texture_pressed.gradient = new_gradient
 	button.texture_hover.gradient = new_gradient
-
