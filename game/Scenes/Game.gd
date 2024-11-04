@@ -250,7 +250,8 @@ func _record_player_final_score(score:int):
 			Time.get_datetime_string_from_system(false, true)
 	])
 	# Write data to the file
-	var score_file = FileAccess.open(SCORES_FILE, FileAccess.WRITE)
+	var score_file = FileAccess.open(SCORES_FILE, FileAccess.READ_WRITE)
+	score_file.seek_end()
 	score_file.store_csv_line(data)
 	score_file.close()
 
