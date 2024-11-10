@@ -3,6 +3,8 @@ extends Control
 # Signal to switch back to main menu
 signal menu_dismissed
 
+# Filename for custom settings file
+const SETTINGS_FILE = "user://settings.godot"
 # Names of settings that store colors for player to choose dice with
 const COLOR_A_SETTING = "user_settings/colors/dice_color_a"
 const COLOR_B_SETTING = "user_settings/colors/dice_color_b"
@@ -37,17 +39,20 @@ func _on_back_button_pressed():
 func _on_sfx_slider_value_changed(value:float):
 	ProjectSettings.set_setting(AudioManager.SFX_SETTING, value)
 	AudioManager.set_audio_busses()
+	ProjectSettings.save_custom(SETTINGS_FILE)
 
 
 # Triggered by BgmSlider value being changed; updates BGM level setting
 func _on_bgm_slider_value_changed(value:float):
 	ProjectSettings.set_setting(AudioManager.BGM_SETTING, value)
 	AudioManager.set_audio_busses()
+	ProjectSettings.save_custom(SETTINGS_FILE)
 
 
 # Trigger by left-handed switch toggle; sets left-handed mode setting
 func _on_lefty_switch_toggled(toggled_on:bool):
 	ProjectSettings.set_setting(LEFT_HAND_MODE_SETTING, toggled_on)
+	ProjectSettings.save_custom(SETTINGS_FILE)
 
 
 # Triggered by clicking the TextureButton for color A; creates a 
@@ -77,6 +82,7 @@ func _on_new_color_selected():
 		$PanelContainer/GridContainer/TextureButtonB, 
 		ProjectSettings.get_setting(COLOR_B_SETTING)
 	)
+	ProjectSettings.save_custom(SETTINGS_FILE)
 
 
 # Helper function to set a GradientTexture2D to a single given color
