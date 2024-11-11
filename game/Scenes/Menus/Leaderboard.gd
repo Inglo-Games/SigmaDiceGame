@@ -27,7 +27,7 @@ func _ready():
 		var label_left := Label.new()
 		label_left.text = "%d" % score[0]
 		var label_right := Label.new()
-		label_right.text = score[1]
+		label_right.text = score[1].get_slice(" ", 0)
 		label_right.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		label_right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		line_display.add_child(label_left)
