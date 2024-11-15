@@ -22,6 +22,7 @@ script = ExtResource("1_0s8gd")
 motion_mirroring = Vector2(1200, 2600)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.427451)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

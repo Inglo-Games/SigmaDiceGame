@@ -4,6 +4,10 @@ extends Control
 # Name for high score file
 const SCORES_FILE := "user://scores.csv"
 
+# Speed to scroll bg image
+@onready var bg_move_x := randi_range(-100, 100)
+@onready var bg_move_y := randi_range(-250, 250)
+
 
 func _ready() -> void:
 	# Only show leaderboard button if there is stuff to show
@@ -14,8 +18,8 @@ func _ready() -> void:
 # Make background move each frame
 func _process(delta):
 	var bg = $ParallaxBackground/ParallaxLayer
-	# Move left and down, scaled by framerate
-	bg.motion_offset += Vector2(-83, 127) * delta
+	# Move in a random direction, scaled by framerate
+	bg.motion_offset += Vector2(bg_move_x, bg_move_y) * delta
 
 
 # Handle "Back" action in Android OS
