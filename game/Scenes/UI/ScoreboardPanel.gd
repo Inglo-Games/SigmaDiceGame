@@ -19,6 +19,7 @@ func _on_expander_button_pressed():
 	else:
 		_slide_panel_into_view()
 	$ExpanderButton.release_focus()
+	scoreboard_toggled.emit()
 
 
 # Slide the panel up into the player's viewport

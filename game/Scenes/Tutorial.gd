@@ -5,13 +5,14 @@ class_name GameTutorial
 # Lines to display on tutorial prompts
 const tutorial_lines := [
 	"Swipe up to roll the dice.",
-	"Tap on each die to assign it a color.  You need to have two dice of each color and one uncolored die at the end of each round.",
+	"Tap on each die to change its color.  You need to have two dice of each color and one uncolored die at the end of each round.",
 	"Tap the “End round” button to end the round.",
 	"Tap the “^” button to see the scoreboard.",
 	"Each round, you get points for the sum of each color pair.  Less common pairs like 2 and 12 are worth more.",
 	"The first three points for each sum count against you.  The fourth and later points add to your score.",
 	"The uncolored die is added to the discard pile.  Once the discard pile has three values, you must discard one of those values if possible each round.",
-	"Once any of the discard values has been discarded 10 times, the game ends."
+	"Once any of the discard values has been discarded 10 times, the game ends.",
+	"Good luck!"
 ]
 # Locations to put tutorial prompts
 const tutorial_anchors := [
@@ -22,6 +23,7 @@ const tutorial_anchors := [
 	Vector4(0.05, 0.95, 0.2, 0.3),
 	Vector4(0.05, 0.95, 0.3, 0.4),
 	Vector4(0.05, 0.95, 0.8, 0.9),
+	Vector4(0.05, 0.95, 0.45, 0.55),
 	Vector4(0.05, 0.95, 0.45, 0.55)
 ]
 
@@ -61,7 +63,7 @@ func _add_tut_prompt():
 # Triggered by a tutorial prompt being dismissed, may show another prompt
 # depending on current tutorial step
 func _on_prompt_dismissed():
-	if tut_step == 5 or tut_step == 6:
+	if tut_step == 5 or tut_step == 6 or tut_step == 8:
 		_add_tut_prompt()
 
 
