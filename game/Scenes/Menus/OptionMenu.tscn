@@ -84,11 +84,13 @@ tick_count = 6
 ticks_on_borders = true
 
 [node name="BgmLabel" type="Label" parent="PanelContainer/GridContainer"]
+visible = false
 layout_mode = 2
 text = "Music"
 horizontal_alignment = 2
 
 [node name="BgmSlider" type="HSlider" parent="PanelContainer/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
