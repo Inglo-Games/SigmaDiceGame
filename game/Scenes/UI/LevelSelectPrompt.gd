@@ -1,5 +1,7 @@
 extends Control
 
+const game_scene := preload("res://Scenes/Game.tscn")
+
 @onready var level_selector : OptionButton = $PromptContainer/VBoxContainer/LevelSelector
 
 
@@ -19,7 +21,7 @@ func _on_cancel_button_pressed():
 
 # Triggered by pressing "Play" button; loads game with selected stage
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
+	get_tree().change_scene_to_packed(game_scene)
 
 
 # Triggered by selecting an item in the level dropdown; sets stage variable to

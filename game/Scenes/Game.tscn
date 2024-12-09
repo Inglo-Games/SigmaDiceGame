@@ -64,5 +64,37 @@ offset_top = -56.0
 offset_bottom = 1801.0
 grow_vertical = 0
 
+[node name="LoadingScreen" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_2o0ol")
+color = Color(0.152344, 0.152344, 0.152344, 1)
+
+[node name="VBox" type="VBoxContainer" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LoadingScreen/VBox"]
+layout_mode = 2
+text = "LOADING..."
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen/VBox"]
+layout_mode = 2
+max_value = 1.0
+
 [connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

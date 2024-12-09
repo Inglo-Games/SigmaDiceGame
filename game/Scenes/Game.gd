@@ -36,6 +36,9 @@ const SWIPE_THRESHOLD := 192.0
 # Game state and logic object
 var game_state
 
+# Path to stage scene to load
+var stage_scene_path := "res://Scenes/Envs/Street.tscn"
+
 # Track state of the dice (start of round, rolling, or finished moving)
 var dice_state := DICE_STATE.START
 # Track number of dice moving at any time
@@ -55,22 +58,19 @@ func _ready():
 	
 	# Load the stage scene as a child of this one based on what the player
 	# selected earlier; their choice was stored in this hidden setting
-	var stage_scene : Node3D
-	if(self is GameTutorial):
-		stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
-	else:
+	if(not self is GameTutorial):
 		match ProjectSettings.get_setting("user_settings/game/stage"):
 			"Street":
-				stage_scene = load("res://Scenes/Envs/Street.tscn").instantiate()
+				stage_scene_path = "res://Scenes/Envs/Street.tscn"
 			"Rainy Street":
-				stage_scene = load("res://Scenes/Envs/StreetRain.tscn").instantiate()
+				stage_scene_path = "res://Scenes/Envs/StreetRain.tscn"
 			"Cavern":
-				stage_scene = load("res://Scenes/Envs/Cavern.tscn").instantiate()
+				stage_scene_path = "res://Scenes/Envs/Cavern.tscn"
 			"Spaceship":
-				stage_scene = load("res://Scenes/Envs/Spaceship.tscn").instantiate()
+				stage_scene_path = "res://Scenes/Envs/Spaceship.tscn"
 			_:
-				stage_scene = load("res://Scenes/Envs/Dev.tscn").instantiate()
-	add_child(stage_scene)
+				stage_scene_path = "res://Scenes/Envs/Dev.tscn"
+	ResourceLoader.load_threaded_request(stage_scene_path)
 	
 	# Connect scoreboard sliding signal to function to move other buttons
 	$ScoreboardPanel.scoreboard_toggled.connect(_move_round_and_menu_buttons)
@@ -88,6 +88,22 @@ func _ready():
 		var left_pos = $BackButton.position
 		$BackButton.position = $EndRoundButton.position
 		$EndRoundButton.position = left_pos
+
+
+func _process(_delta: float) -> void:
+	if $LoadingScreen.visible:
+		# Check and update the status of loading the stage
+		var load_amount := []
+		var load_status := ResourceLoader.load_threaded_get_status(stage_scene_path, load_amount)
+		if load_status != ResourceLoader.THREAD_LOAD_LOADED:
+			$LoadingScreen/VBox/ProgressBar.value = load_amount[0]
+		# If resource is ready, add it and fade out loading screen
+		else:
+			add_child(ResourceLoader.load_threaded_get(stage_scene_path).instantiate())
+			var tween = create_tween()
+			tween.tween_property($LoadingScreen, "modulate", Color(Color.WHITE, 0.0), 0.5)
+			tween.tween_callback(func(): $LoadingScreen.visible = false)
+			tween.play()
 
 
 func _input(_event):
