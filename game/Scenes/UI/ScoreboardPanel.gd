@@ -19,14 +19,13 @@ func _on_expander_button_pressed():
 	else:
 		_slide_panel_into_view()
 	$ExpanderButton.release_focus()
-	scoreboard_toggled.emit()
 
 
 # Slide the panel up into the player's viewport
 func _slide_panel_into_view():
 	# Determine new position for panel
 	var target_pos = Vector2(position.x, position.y - SLIDE_TARGET_Y)
-	scoreboard_toggled.emit()
+	scoreboard_toggled.emit(-SLIDE_TARGET_Y)
 	
 	# Use a tween to slide panel
 	var tween = get_tree().create_tween()
@@ -44,7 +43,7 @@ func _slide_panel_into_view():
 # Slide the panel down out of the player's viewport
 func _slide_panel_out_view():
 	var target_pos = Vector2(position.x, position.y + SLIDE_TARGET_Y)
-	scoreboard_toggled.emit()
+	scoreboard_toggled.emit(SLIDE_TARGET_Y)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", target_pos, 0.5)
