@@ -51,7 +51,7 @@ func _physics_process(_delta):
 	if is_moving:
 		if linear_velocity.length() <= 0.0001:
 			is_moving = false
-			emit_signal("finished_moving")
+			finished_moving.emit()
 	
 	# Reposition face detecting raycast to be above die WRT global position
 	face_cast.global_position = global_position + Vector3.UP
@@ -87,7 +87,7 @@ func get_color() -> Color :
 func _on_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event.is_action("select_die") and event.is_pressed():
 		_change_glow_color()
-		emit_signal("color_selection_changed")
+		color_selection_changed.emit()
 
 
 # Change the color of the glow around the die's edge
@@ -114,7 +114,7 @@ func _reset_die():
 	glow_color = GLOW_NONE
 	pip_material.albedo_color = glow_color
 	pip_material.emission_enabled = false
-	emit_signal("color_selection_changed")
+	color_selection_changed.emit()
 
 
 # Randomize the rotation values
