@@ -171,7 +171,22 @@ func _decrement_moving_dice_count():
 		print("All the dice stopped!")
 		dice_state = DICE_STATE.FINISHED
 		$EndRoundButton.disabled = false
+		$ShakeButton.disabled = false
 		dice_stopped.emit()
+
+
+# Callback for "SHAKE" button; nudges dice to move any stacked/diagonal dice
+func _on_shake_dice_button():
+	$ShakeButton.release_focus()
+	# Only do something if the dice are done moving
+	if dice_state == DICE_STATE.FINISHED:
+		# Disable button to prevent flying dice by button mashing
+		$ShakeButton.disabled = true
+		for die in [$Die, $Die2, $Die3, $Die4, $Die5]:
+			die.apply_impulse(Vector3(randf_range(-3.0, 3.0), 10.0, randf_range(-3.0, 3.0)))
+		# Re-enable button after short timeout
+		await get_tree().create_timer(5.0).timeout
+		$ShakeButton.disabled = false
 
 
 # Callback for "End Round" button
@@ -199,6 +214,7 @@ func _launch_dice():
 	# movement check fails
 	await get_tree().create_timer(5.0).timeout
 	$EndRoundButton.disabled = false
+	$ShakeButton.disabled = false
 
 
 # Triggered by scoreboard sliding signal; move other buttons with it
@@ -228,6 +244,7 @@ func _reset_game_state():
 	get_tree().call_group("dice", "_reset_die")
 	$Camera3D.transform = CAM_START_POS
 	$EndRoundButton.disabled = true
+	$ShakeButton.disabled = true
 
 
 # Display a temp notification alerting player of selection error

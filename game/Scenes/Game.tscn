@@ -45,6 +45,21 @@ theme = ExtResource("4_2o0ol")
 disabled = true
 text = "End Round"
 
+[node name="ShakeButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 35.0
+offset_right = -35.0
+offset_bottom = 131.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_2o0ol")
+disabled = true
+text = "Nudge Dice"
+
 [node name="BackButton" type="Button" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
@@ -97,4 +112,5 @@ layout_mode = 2
 max_value = 1.0
 
 [connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
+[connection signal="pressed" from="ShakeButton" to="." method="_on_shake_dice_button"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
