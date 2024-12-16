@@ -33,16 +33,21 @@ fog_height_density = 9.8246
 environment = SubResource("Environment_ve1r6")
 
 [node name="Torch" parent="." instance=ExtResource("2_5d6ph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.855, 0.775, -2.956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.855, 0.775, -1.50463)
 
 [node name="Torch2" parent="." instance=ExtResource("2_5d6ph")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.855, 1.308, -0.765)
+visible = false
 
 [node name="Torch3" parent="." instance=ExtResource("2_5d6ph")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.85502, 0.775228, -2.95606)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.85502, 0.775228, -1.50469)
 
 [node name="Torch4" parent="." instance=ExtResource("2_5d6ph")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.85502, 1.30755, -0.765385)
+visible = false
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 0
+bounces = 2
+generate_probes_subdiv = 1
 light_data = ExtResource("3_dxcry")
