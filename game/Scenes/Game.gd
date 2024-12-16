@@ -4,6 +4,7 @@ class_name GameEnvironment
 enum DICE_STATE {START, ROLLING, FINISHED} 
 
 signal dice_stopped
+signal loading_complete
 signal round_ended
 
 # Transform for Camera's starting position
@@ -104,6 +105,8 @@ func _process(_delta: float) -> void:
 			tween.tween_property($LoadingScreen, "modulate", Color(Color.WHITE, 0.0), 0.5)
 			tween.tween_callback(func(): $LoadingScreen.visible = false)
 			tween.play()
+			await tween.finished
+			loading_complete.emit()
 
 
 func _input(_event):

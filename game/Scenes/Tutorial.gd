@@ -48,8 +48,8 @@ func _ready():
 		if node is Die:
 			node.color_selection_changed.connect(_on_die_assigned)
 	
-	# Add initial tutorial prompt to screen
-	_add_tut_prompt()
+	# Add initial tutorial prompt to screen when loading is complete
+	loading_complete.connect(_add_tut_prompt)
 
 
 # Create a new prompt using the TutorialPromptFactory class and add it to the scene

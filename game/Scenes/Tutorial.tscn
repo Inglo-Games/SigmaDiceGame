@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6cj2bv5b2yuk"]
+[gd_scene load_steps=5 format=3 uid="uid://b6cj2bv5b2yuk"]
 
 [ext_resource type="Script" path="res://Scenes/Tutorial.gd" id="1_fgpix"]
 [ext_resource type="PackedScene" uid="uid://bnuyb0p8l4syw" path="res://Scenes/Die.tscn" id="2_iwf6n"]
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="3_hxy5e"]
 [ext_resource type="PackedScene" uid="uid://dj0uen5t451qt" path="res://Scenes/UI/ScoreboardPanel.tscn" id="4_2856m"]
-[ext_resource type="PackedScene" uid="uid://dno1j08arsktj" path="res://Scenes/Envs/Street.tscn" id="5_n41wp"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_fgpix")
@@ -46,6 +45,21 @@ theme = ExtResource("3_hxy5e")
 disabled = true
 text = "End Round"
 
+[node name="ShakeButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 35.0
+offset_right = -20.0
+offset_bottom = 131.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_hxy5e")
+disabled = true
+text = "Nudge Dice"
+
 [node name="BackButton" type="Button" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
@@ -65,7 +79,38 @@ offset_top = -56.0
 offset_bottom = 1801.0
 grow_vertical = 0
 
-[node name="Street" parent="." instance=ExtResource("5_n41wp")]
+[node name="LoadingScreen" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_hxy5e")
+color = Color(0.152344, 0.152344, 0.152344, 1)
+
+[node name="VBox" type="VBoxContainer" parent="LoadingScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LoadingScreen/VBox"]
+layout_mode = 2
+text = "LOADING..."
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen/VBox"]
+layout_mode = 2
+max_value = 1.0
 
 [connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
+[connection signal="pressed" from="ShakeButton" to="." method="_on_shake_dice_button"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
