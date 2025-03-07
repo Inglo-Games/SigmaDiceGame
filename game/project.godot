@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sigma Dice"
-config/version="0.12"
+config/version="0.14.0"
 run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/project_settings_override="user://settings.godot"
 config/quit_on_go_back=false
@@ -27,6 +27,12 @@ buses/channel_disable_threshold_db=-79.0
 
 AudioManager="*res://Scenes/Managers/AudioManager.gd"
 RngManager="*res://Scenes/Managers/RNGManager.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
+canvas_items/stdout/print_gpu_profile=false
+canvas_items/stdout/print_fps=false
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://8bcavu88mft3"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://8bcavu88mft3"]
 
 [ext_resource type="FontFile" uid="uid://cx7sr0raqrdbv" path="res://Assets/fonts/SourceSans3-SemiBold.ttf" id="1_4o71i"]
 [ext_resource type="Texture2D" uid="uid://huysf8uu1ds5" path="res://Assets/images/ui/checkbox_on.svg" id="2_dn0hi"]
@@ -81,6 +81,30 @@ expand_margin_top = 24.0
 expand_margin_right = 24.0
 expand_margin_bottom = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oipuc"]
+bg_color = Color(0.117188, 0.117188, 0.117188, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuf7i"]
+bg_color = Color(0.710938, 0.710938, 0.710938, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [resource]
 Button/colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.247059)
@@ -105,9 +129,12 @@ HBoxContainer/constants/separation = 40
 HSlider/icons/grabber = ExtResource("2_dp81r")
 HSlider/icons/grabber_highlight = ExtResource("2_dp81r")
 Label/font_sizes/font_size = 54
+Label/fonts/font = ExtResource("1_4o71i")
 OptionButton/font_sizes/font_size = 48
 OptionButton/fonts/font = ExtResource("1_4o71i")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_4heme")
 PopupMenu/font_sizes/font_size = 46
 PopupMenu/fonts/font = ExtResource("1_4o71i")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_oipuc")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kuf7i")
 VBoxContainer/constants/separation = 18

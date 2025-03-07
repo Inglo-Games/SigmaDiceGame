@@ -75,8 +75,8 @@ text = "Main Menu"
 [node name="ScoreboardPanel" parent="." instance=ExtResource("4_56du8")]
 anchors_preset = 12
 anchor_top = 1.0
-offset_top = -56.0
-offset_bottom = 1801.0
+offset_top = -88.0
+offset_bottom = 1818.0
 grow_vertical = 0
 
 [node name="LoadingScreen" type="ColorRect" parent="."]
@@ -95,21 +95,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -27.0
-offset_right = 20.0
-offset_bottom = 27.0
+offset_left = -145.0
+offset_top = -50.0
+offset_right = 145.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="LoadingScreen/VBox"]
 layout_mode = 2
-text = "LOADING..."
+text = "Loading..."
+horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadingScreen/VBox"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 max_value = 1.0
+show_percentage = false
 
 [connection signal="pressed" from="EndRoundButton" to="." method="_on_pressed_end_round_button"]
 [connection signal="pressed" from="ShakeButton" to="." method="_on_shake_dice_button"]

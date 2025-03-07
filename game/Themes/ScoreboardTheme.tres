@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dw1mrg7s2rdd1"]
 
-[ext_resource type="FontFile" uid="uid://bcqe74ul38mkn" path="res://Assets/fonts/SourceCodePro.ttf" id="1_aro13"]
+[ext_resource type="FontFile" uid="uid://cx7sr0raqrdbv" path="res://Assets/fonts/SourceSans3-SemiBold.ttf" id="2_t26tf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4heme"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 0.917647)
@@ -30,10 +30,10 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
 Button/constants/outline_size = 4
 Button/font_sizes/font_size = 64
-Button/fonts/font = ExtResource("1_aro13")
+Button/fonts/font = ExtResource("2_t26tf")
 HBoxContainer/constants/separation = 15
 Label/constants/outline_size = 4
 Label/font_sizes/font_size = 36
-Label/fonts/font = ExtResource("1_aro13")
+Label/fonts/font = ExtResource("2_t26tf")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_4heme")
 VBoxContainer/constants/separation = 6
