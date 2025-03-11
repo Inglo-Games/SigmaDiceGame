@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://boi486cpgr207"]
 
 [ext_resource type="Texture2D" uid="uid://cbw583wq8bcc8" path="res://Assets/images/ui/score_led_blank.png" id="1_b50ot"]
-[ext_resource type="Script" path="res://Scenes/UI/ScoreLightRow.gd" id="1_o8co5"]
+[ext_resource type="Script" uid="uid://bjefvgnqohbxl" path="res://Scenes/UI/ScoreLightRow.gd" id="1_o8co5"]
 
 [node name="ScoreLightRow" type="HBoxContainer"]
 script = ExtResource("1_o8co5")

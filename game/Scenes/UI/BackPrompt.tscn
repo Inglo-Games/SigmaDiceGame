@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr1xx8wimb52l"]
 
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_tvvwv"]
-[ext_resource type="Script" path="res://Scenes/UI/BackPrompt.gd" id="2_8tg6e"]
+[ext_resource type="Script" uid="uid://58aw6aqrrpo" path="res://Scenes/UI/BackPrompt.gd" id="2_8tg6e"]
 
 [node name="BackPrompt" type="Control"]
 layout_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl3f6guqnxy8s"]
 
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_p7lbj"]
-[ext_resource type="Script" path="res://Scenes/UI/ContinuePrompt.gd" id="2_lton4"]
+[ext_resource type="Script" uid="uid://pp1etgbl2uh0" path="res://Scenes/UI/ContinuePrompt.gd" id="2_lton4"]
 
 [node name="ContinuePrompt" type="Control"]
 layout_mode = 3

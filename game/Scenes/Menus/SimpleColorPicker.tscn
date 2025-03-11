@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr8m5hati0f1o"]
 
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_6yxss"]
-[ext_resource type="Script" path="res://Scenes/Menus/SimpleColorPicker.gd" id="2_wuara"]
+[ext_resource type="Script" uid="uid://dnga3bdiyf1uy" path="res://Scenes/Menus/SimpleColorPicker.gd" id="2_wuara"]
 
 [node name="SimpleColorPicker" type="Control"]
 layout_mode = 3

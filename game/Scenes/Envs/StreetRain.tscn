@@ -37,7 +37,7 @@ initial_velocity_min = 23.81
 initial_velocity_max = 23.81
 
 [sub_resource type="Curve" id="Curve_eatw4"]
-max_value = 0.1
+_limits = [0.0, 0.1, 0.0, 1.0]
 _data = [Vector2(0, 0.00769231), 0.0, 0.0, 0, 0, Vector2(0.0865385, 0.0296703), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0182857, 0.0, 0, 0]
 point_count = 3
 

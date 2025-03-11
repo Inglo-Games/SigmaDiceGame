@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0tfikihjgm6k"]
 
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_byf4h"]
-[ext_resource type="Script" path="res://Scenes/UI/TutorialPrompt.gd" id="2_oqq7i"]
+[ext_resource type="Script" uid="uid://ck0fh7rv1rw0h" path="res://Scenes/UI/TutorialPrompt.gd" id="2_oqq7i"]
 
 [node name="TutorialPrompt" type="Control"]
 layout_mode = 3

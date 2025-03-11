@@ -15,7 +15,7 @@ config/version="0.14.0"
 run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/project_settings_override="user://settings.godot"
 config/quit_on_go_back=false
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.png"
 
 [audio]

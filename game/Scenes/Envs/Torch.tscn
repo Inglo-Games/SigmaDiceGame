@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://b8f04gpvrk4ge"]
 
-[ext_resource type="Script" path="res://Scenes/Envs/Torch.gd" id="1_8kcxq"]
+[ext_resource type="Script" uid="uid://ceiqtajugasig" path="res://Scenes/Envs/Torch.gd" id="1_8kcxq"]
 [ext_resource type="PackedScene" uid="uid://26jnp0kq3yvl" path="res://Meshes/torch.glb" id="1_x1e0k"]
 [ext_resource type="AudioStream" uid="uid://dr8al0qx481rf" path="res://Assets/sfx/Fire.mp3" id="2_ulrce"]
 
@@ -69,6 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201657, 0.488835, 0)
 light_color = Color(1, 0.762874, 0.241543, 1)
 light_energy = 1.75
 light_size = 0.4
+light_bake_mode = 0
 shadow_enabled = true
 omni_range = 12.0
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnuyb0p8l4syw"]
 
-[ext_resource type="Script" path="res://Scenes/Die.gd" id="1_7np7b"]
+[ext_resource type="Script" uid="uid://dfjnp230alnhy" path="res://Scenes/Die.gd" id="1_7np7b"]
 [ext_resource type="PackedScene" uid="uid://dwykr8euvxcab" path="res://Meshes/basic_die.glb" id="2_m3mmb"]
 [ext_resource type="AudioStream" uid="uid://cthykgub1p0wm" path="res://Assets/sfx/click.wav" id="3_8jc74"]
 

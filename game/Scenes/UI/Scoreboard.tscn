@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckferd6wgtq5r"]
 
 [ext_resource type="Theme" uid="uid://dw1mrg7s2rdd1" path="res://Themes/ScoreboardTheme.tres" id="1_j6rj5"]
-[ext_resource type="Script" path="res://Scenes/UI/Scoreboard.gd" id="1_nau32"]
+[ext_resource type="Script" uid="uid://06c5otmiiw1b" path="res://Scenes/UI/Scoreboard.gd" id="1_nau32"]
 [ext_resource type="PackedScene" uid="uid://boi486cpgr207" path="res://Scenes/UI/ScoreLightRow.tscn" id="2_e16jj"]
 
 [node name="Scoreboard" type="Control"]

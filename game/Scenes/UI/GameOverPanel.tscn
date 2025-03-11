@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpfl72c6t38vj"]
 
-[ext_resource type="Script" path="res://Scenes/UI/GameOverPanel.gd" id="1_ahe6m"]
+[ext_resource type="Script" uid="uid://bpgceottuf61u" path="res://Scenes/UI/GameOverPanel.gd" id="1_ahe6m"]
 [ext_resource type="Theme" uid="uid://8bcavu88mft3" path="res://Themes/MainTheme.tres" id="1_gafo1"]
 
 [node name="GameOverPanel" type="PanelContainer"]
