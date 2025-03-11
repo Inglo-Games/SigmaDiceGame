@@ -1,0 +1,1 @@
+Sigma is a solitaire dice game.  Roll 5 dice and create pairs to increase your score, but be careful not to let your score fall into the negatives!
