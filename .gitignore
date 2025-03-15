@@ -5,7 +5,6 @@ game/.godot/
 game/StoreAssets/
 
 # Export file ignores
-game/export_presets.cfg
 game/android/*
 *.aab
 *.apk

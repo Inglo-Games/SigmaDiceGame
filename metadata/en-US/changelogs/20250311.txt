@@ -1,0 +1,2 @@
+* Upgraded Godot engine to v4.4
+* Increased performance on Cavern level
